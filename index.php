@@ -22,8 +22,7 @@
         </div>
       </div>
 
-    </div>
-<?php
+      <?php
 //  Include thư viện PHPExcel_IOFactory vào
 include 'lib/Classes/PHPExcel/IOFactory.php';
 
@@ -77,5 +76,8 @@ echo "</table>";
 // echo "</pre>";
 
 ?>
+
+    </div>
+
   </body>
 </html>
