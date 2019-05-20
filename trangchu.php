@@ -23,13 +23,10 @@ try {
 
 // Lấy sheet hiện tại
 $sheet = $objPHPExcel->getSheet(0); 
-echo $sheet;
 // Lấy tổng số dòng của file, trong trường hợp này là 6 dòng
 $highestRow = $sheet->getHighestRow(); 
 // Lấy tổng số cột của file, trong trường hợp này là 4 dòng
 $highestColumn = $sheet->getHighestColumn();
-echo $highestColumn;
-echo $highestRow;
 // Khai báo mảng $rowData chứa dữ liệu
 
 //  Thực hiện việc lặp qua từng dòng của file, để lấy thông tin

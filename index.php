@@ -23,32 +23,6 @@
       </div>
 
     </div>
-
-<?php
-	// require_once"./lib/Classes/PHPExcel.php";
-	// $file = "data/test.xlsx";
-
-	// $objFile = PHPExcel_IOFactory::identify($file);
-	// $objData = PHPExcel_IOFactory::createReader($objFile);
-
-	// $objData->setReadDataOnly(true);
-	// $objPHPExcel = $objData->load($file);
-
-	// $sheet = $objPHPExcel->setActiveSheetIndex(0); // select sheet 1
-	// $totalrows = $sheet->getHighestRow();
-	// $lastColumn = $sheet->getHighestColumn();
-	// $totalcols = PHPecel_Cell::columnIndexFromString($lastColumn);
-
-	// $data = [];
-
-	// for($i = 2; $i<=$totalrows; $i++)
-	// 	for($j = 0; $j < $totalcols; $j++)
-	// 		$data[$i-2][$j] = $sheet->getCellByColumnAndRow($j,$i)->getValue();;
-
-	// echo "<pre>";
-	// var_dump($data);
-	// echo "</pre>";
-?>
 <?php
 //  Include thư viện PHPExcel_IOFactory vào
 include 'lib/Classes/PHPExcel/IOFactory.php';
@@ -82,11 +56,25 @@ for ($row = 1; $row <= $highestRow; $row++){
     // Lấy dữ liệu từng dòng và đưa vào mảng $rowData
     $rowData[] = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE,FALSE);
 }
-
+echo "<table id='my-table' style='border:1px solid black;'>";
+foreach ($rowData as $row) {
+  foreach ($row as $value) {
+      echo "<tr>";
+      foreach ($value as $key) {
+          echo "<td>";
+          echo $key;
+          echo "</td>";
+          # code...
+      }
+      echo "</tr>";
+  }
+  # code...
+}
+echo "</table>";
 //In dữ liệu của mảng
-echo "<pre>";
-print_r($rowData);
-echo "</pre>";
+// echo "<pre>";
+// print_r($rowData);
+// echo "</pre>";
 
 ?>
   </body>
