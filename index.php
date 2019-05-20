@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-        <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
         <link href="style.css" rel ="stylesheet">
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -17,7 +17,7 @@
     <div class="container h-48">
       <div class="d-flex justify-content-center h-45">
         <div class="searchbar">
-          <input class="search_input" type="text" name="" placeholder="Search..." spellcheck="false">
+          <input id='search_input' class="search_input" type="text" name="" placeholder="Search..." spellcheck="false">
           <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
         </div>
       </div>
@@ -75,13 +75,16 @@ foreach ($rowData as $row) {
             # code...
         }
       }
-       $head = false;
+       if($head){
+          $head = false;
+          echo "<tbody id='my-table-content'>";
+       }
       echo "</tr>";
   }
   # code...
 }
-
-// echo "</table>";
+echo "</tbody>";
+echo "</table>";
 //In dữ liệu của mảng
 // echo "<pre>";
 // print_r($rowData);
@@ -89,4 +92,7 @@ foreach ($rowData as $row) {
 
 ?>
   </body>
+
+    <script type="text/javascript" src="lib/func.js"></script>
+
 </html>
