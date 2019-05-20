@@ -56,21 +56,32 @@ for ($row = 1; $row <= $highestRow; $row++){
     // Lấy dữ liệu từng dòng và đưa vào mảng $rowData
     $rowData[] = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE,FALSE);
 }
+$head = true;
 echo "<table id='my-table' style='border:1px solid black;'>";
 foreach ($rowData as $row) {
   foreach ($row as $value) {
       echo "<tr>";
       foreach ($value as $key) {
-          echo "<td>";
-          echo $key;
-          echo "</td>";
-          # code...
+        if(!$head){
+            echo "<td>";
+            echo $key;
+            echo "</td>";
+            # code...
+        }
+        else{
+            echo "<th>";
+            echo $key;
+            echo "</th>";
+            # code...
+        }
       }
+       $head = false;
       echo "</tr>";
   }
   # code...
 }
-echo "</table>";
+
+// echo "</table>";
 //In dữ liệu của mảng
 // echo "<pre>";
 // print_r($rowData);
