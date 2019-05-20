@@ -21,6 +21,33 @@
           <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
         </div>
       </div>
+
     </div>
+
+    <?php
+	require_once("./lib/Classes/PHPExcel.php");
+	$file = "test.xlsx";
+
+	$objFile = PHPExcel_IOFactory::identity($file);
+	$objData = PHPExcel_IOFactory::createReader($objFile);
+
+	$objData->setReadDataOnly(true);
+	$objPHPExcel = $objData->load($file);
+
+	$sheet = $objPHPExcel->setActiveSheetIndex(0); // select sheet 1
+	$totalrows = $sheet->getHighestRow();
+	$lastColumn = $sheet->getHighestColumn();
+	$totalcols = PHPecel_Cell::columnIndexFromString($lastColumn);
+
+	$data = [];
+
+	for($i = 2; $i<=$totalrows; $i++)
+		for($j = 0; $j < $totalcols; $j++)
+			$data[$i-2][$j] = $sheet->getCellByColumnAndRow($j,$i)->getValue();
+
+	echo "<pre>";
+	var_dump($data);
+	echo "</pre>";
+?>
   </body>
 </html>
