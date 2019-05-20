@@ -24,30 +24,70 @@
 
     </div>
 
-    <?php
-	require_once("./lib/Classes/PHPExcel.php");
-	$file = "test.xlsx";
+<?php
+	// require_once"./lib/Classes/PHPExcel.php";
+	// $file = "data/test.xlsx";
 
-	$objFile = PHPExcel_IOFactory::identity($file);
-	$objData = PHPExcel_IOFactory::createReader($objFile);
+	// $objFile = PHPExcel_IOFactory::identify($file);
+	// $objData = PHPExcel_IOFactory::createReader($objFile);
 
-	$objData->setReadDataOnly(true);
-	$objPHPExcel = $objData->load($file);
+	// $objData->setReadDataOnly(true);
+	// $objPHPExcel = $objData->load($file);
 
-	$sheet = $objPHPExcel->setActiveSheetIndex(0); // select sheet 1
-	$totalrows = $sheet->getHighestRow();
-	$lastColumn = $sheet->getHighestColumn();
-	$totalcols = PHPecel_Cell::columnIndexFromString($lastColumn);
+	// $sheet = $objPHPExcel->setActiveSheetIndex(0); // select sheet 1
+	// $totalrows = $sheet->getHighestRow();
+	// $lastColumn = $sheet->getHighestColumn();
+	// $totalcols = PHPecel_Cell::columnIndexFromString($lastColumn);
 
-	$data = [];
+	// $data = [];
 
-	for($i = 2; $i<=$totalrows; $i++)
-		for($j = 0; $j < $totalcols; $j++)
-			$data[$i-2][$j] = $sheet->getCellByColumnAndRow($j,$i)->getValue();
+	// for($i = 2; $i<=$totalrows; $i++)
+	// 	for($j = 0; $j < $totalcols; $j++)
+	// 		$data[$i-2][$j] = $sheet->getCellByColumnAndRow($j,$i)->getValue();;
 
-	echo "<pre>";
-	var_dump($data);
-	echo "</pre>";
+	// echo "<pre>";
+	// var_dump($data);
+	// echo "</pre>";
+?>
+<?php
+//  Include thư viện PHPExcel_IOFactory vào
+include 'lib/Classes/PHPExcel/IOFactory.php';
+
+$inputFileName = 'data/test.xlsx';
+
+//  Tiến hành đọc file excel
+try {
+    $inputFileType = PHPExcel_IOFactory::identify($inputFileName);
+    $objReader = PHPExcel_IOFactory::createReader($inputFileType);
+    $objPHPExcel = $objReader->load($inputFileName);
+} catch(Exception $e) {
+    die('Lỗi không thể đọc file "'.pathinfo($inputFileName,PATHINFO_BASENAME).'": '.$e->getMessage());
+}
+
+//  Lấy thông tin cơ bản của file excel
+
+// Lấy sheet hiện tại
+$sheet = $objPHPExcel->getSheet(0); 
+
+// Lấy tổng số dòng của file, trong trường hợp này là 6 dòng
+$highestRow = $sheet->getHighestRow(); 
+
+// Lấy tổng số cột của file, trong trường hợp này là 4 dòng
+$highestColumn = $sheet->getHighestColumn();
+
+// Khai báo mảng $rowData chứa dữ liệu
+
+//  Thực hiện việc lặp qua từng dòng của file, để lấy thông tin
+for ($row = 1; $row <= $highestRow; $row++){ 
+    // Lấy dữ liệu từng dòng và đưa vào mảng $rowData
+    $rowData[] = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE,FALSE);
+}
+
+//In dữ liệu của mảng
+echo "<pre>";
+print_r($rowData);
+echo "</pre>";
+
 ?>
   </body>
 </html>
