@@ -20,9 +20,7 @@
           <input class="search_input" type="text" name="" placeholder="Search..." spellcheck="false">
           <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
         </div>
-      </div>
-
-      <?php
+        <?php
 //  Include thư viện PHPExcel_IOFactory vào
 include 'lib/Classes/PHPExcel/IOFactory.php';
 
@@ -77,6 +75,9 @@ echo "</table>";
 
 ?>
 
+      </div>
+
+      
     </div>
 
   </body>
