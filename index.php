@@ -15,12 +15,15 @@
   <!-- Coded with love by Mutiullah Samim-->
   <body>
     <div class="container h-100">
-      <div class="d-flex justify-content-center h-100">
+      <div class="d-flex justify-content-center h-40">
         <div class="searchbar">
           <input class="search_input" type="text" name="" placeholder="Search..." spellcheck="false">
           <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
         </div>
-        <?php
+      </div>
+
+    </div>
+<?php
 //  Include thư viện PHPExcel_IOFactory vào
 include 'lib/Classes/PHPExcel/IOFactory.php';
 
@@ -74,11 +77,5 @@ echo "</table>";
 // echo "</pre>";
 
 ?>
-
-      </div>
-
-      
-    </div>
-
   </body>
 </html>
