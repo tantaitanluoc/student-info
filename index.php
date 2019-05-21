@@ -27,7 +27,7 @@
 //  Include thư viện PHPExcel_IOFactory vào
 include 'lib/Classes/PHPExcel/IOFactory.php';
 
-$inputFileName = 'data/test.xlsx';
+$inputFileName = 'data/product.xlsx';
 
 //  Tiến hành đọc file excel
 try {
@@ -85,6 +85,7 @@ foreach ($rowData as $row) {
 }
 echo "</tbody>";
 echo "</table>";
+echo "<a id='export-table'>Export</a>"
 //In dữ liệu của mảng
 // echo "<pre>";
 // print_r($rowData);
