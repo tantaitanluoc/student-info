@@ -79,6 +79,7 @@
           #export-table{
           position: absolute;
           left: 92%;
+          bottom: 89%;
           background-color: #4CAF50; /* Green */
           border: none;
           color: white;
