@@ -12,7 +12,7 @@
     <title>Awesome Search Box</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   </head>
-  <!-- Coded with love by Mutiullah Samim-->
+  <!-- Coded with love by d3t-->
   <body>
     <div class="container h-48">
       <div class="d-flex justify-content-center h-50">
@@ -27,7 +27,7 @@
 //  Include thư viện PHPExcel_IOFactory vào
 include 'lib/Classes/PHPExcel/IOFactory.php';
 
-$inputFileName = 'data/product.xlsx';
+$inputFileName = 'data/product.xls';
 
 //  Tiến hành đọc file excel
 try {
