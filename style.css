@@ -77,6 +77,7 @@
           }
 
           #export-table{
+          right: 50%;
           background-color: #4CAF50; /* Green */
           border: none;
           color: white;
@@ -85,6 +86,5 @@
           text-decoration: none;
           display: inline-block;
           font-size: 16px;
-          float: right;
-          position: absolute;
+          
           }
