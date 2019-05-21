@@ -85,7 +85,7 @@ foreach ($rowData as $row) {
 }
 echo "</tbody>";
 echo "</table>";
-echo "<a id='export-table'>Export</a>"
+echo "<button id='export-table'>Export</button>"
 //In dữ liệu của mảng
 // echo "<pre>";
 // print_r($rowData);
