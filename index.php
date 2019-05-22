@@ -31,52 +31,7 @@ require 'lib/Classes/PHPExcel.php';
 require_once 'lib/Classes/PHPExcel/IOFactory.php';
 require 'lib/database.php';
 loadData();
-function importFromExcel(){
-    $file = "data/1.xlsx";
 
-    $objFile = PHPExcel_IOFactory::identify($file);
-    $objData = PHPExcel_IOFactory::createReader($objFile);
-
-    //Chỉ đọc dữ liệu
-    $objData->setReadDataOnly(true);
-
-    // Load dữ liệu sang dạng đối tượng
-    $objPHPExcel = $objData->load($file);
-
-    //Lấy ra số trang sử dụng phương thức getSheetCount();
-    // Lấy Ra tên trang sử dụng getSheetNames();
-
-    //Chọn trang cần truy xuất
-    $sheet = $objPHPExcel->setActiveSheetIndex(0);
-
-    //Lấy ra số dòng cuối cùng
-    $Totalrow = $sheet->getHighestRow();
-    //Lấy ra tên cột cuối cùng
-    $LastColumn = $sheet->getHighestColumn();
-
-    //Chuyển đổi tên cột đó về vị trí thứ, VD: C là 3,D là 4
-    $TotalCol = PHPExcel_Cell::columnIndexFromString($LastColumn);
-
-    //Tạo mảng chứa dữ liệu
-    $data = [];
-
-    //Tiến hành lặp qua từng ô dữ liệu
-    //----Lặp dòng, Vì dòng đầu là tiêu đề cột nên chúng ta sẽ lặp giá trị từ dòng 2
-    for ($i = 2; $i <= $Totalrow; $i++) {
-        //----Lặp cột
-        for ($j = 1; $j < $TotalCol; $j++) {
-            // Tiến hành lấy giá trị của từng ô đổ vào mảng
-            $data[$i - 2][$j] = $sheet->getCellByColumnAndRow($j, $i)->getValue();;
-        }
-    }
-    //Insert vào CSDL 
-    // echo '<pre>';
-    // foreach ($data as $key => $value) {
-    //   insertIntoTable('"'.implode('","', $value).'"');
-    // }
-    // echo '</pre>';
-
-}
 
 function loadData(){
   $data = executeQuery("select * from ".$GLOBALS["tbname"]);
@@ -160,10 +115,32 @@ echo "<button id='import-table' class='buttons'>Import</button>";
 echo "<button id='export-table' class='buttons'>Export</button>";
 
 ?>
-<!-- <script type="text/javascript">
-    var rowData = <?php  ?>;
-</script> -->
-  </body>
+
+
+<div id='uploadExcel'>
+  <form method="post" action="" enctype="multipart/form-data" class="form-horizontal">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row">
+                <label class="col-sm-3 label-on-left" style="margin-top: -16px;">Upload Excel</label>          
+                <div class="col-md-6">
+                    <input name="result_file"  required=""  type="file">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row" >
+        <div class="col-sm-3" style="width: 31%;margin-top: 15px;"> 
+            <div class="pull-right hidden-print">
+                <button type="submit" name="upload_excel" class="btn btn-primary btn-rounded"> Upload Excel</button>
+            </div>
+        </div>
+    </div>   
+  </form>
+</div>
+
+</body>
 
     <script type="text/javascript" src="lib/func.js"></script>
 
