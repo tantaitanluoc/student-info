@@ -111,8 +111,8 @@ function recyclebin(){
     echo "</tbody>";
     echo "</table>";
 }
-echo "<button id='import-table' class='buttons'>Import</button>";
-echo "<button id='export-table' class='buttons'>Export</button>";
+echo "<button id='import-table' class='buttons' class='pull-right hidden-print'>Import</button>";
+echo "<button id='export-table' class='buttons' class='pull-right hidden-print'>Export</button>";
 
 ?>
 
