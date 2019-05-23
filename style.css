@@ -117,3 +117,7 @@ body,html{
     top: 650%;
     left: -40%;
   }
+
+  .blurr{
+    filter: blur(2px);
+  }
