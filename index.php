@@ -15,7 +15,7 @@
   </head>
   <!-- Coded with love by d3t-->
   <body>
-  <div id="wrapperr">
+  <div id="wrapper">
 
     <div class="container h-48">
       <div class="d-flex justify-content-center h-50">
