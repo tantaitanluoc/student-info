@@ -15,6 +15,8 @@
   </head>
   <!-- Coded with love by d3t-->
   <body>
+  <div id="wrapperr">
+
     <div class="container h-48">
       <div class="d-flex justify-content-center h-50">
         <div class="searchbar">
@@ -116,7 +118,7 @@ echo "<button id='export-table' class='buttons' class='pull-right hidden-print'>
 
 ?>
 
-
+</div>
 <div id='upload-excel' style="display: none;">
   <form method="post" action="import/index.php" enctype="multipart/form-data" class="form-horizontal">
     <div class="row">
