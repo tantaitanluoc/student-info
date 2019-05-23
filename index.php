@@ -117,8 +117,8 @@ echo "<button id='export-table' class='buttons'>Export</button>";
 ?>
 
 
-<div id='uploadExcel'>
-  <form method="post" action="" enctype="multipart/form-data" class="form-horizontal">
+<div id='upload-excel' style="display: none;">
+  <form method="post" action="import/index.php" enctype="multipart/form-data" class="form-horizontal">
     <div class="row">
         <div class="col-sm-12">
             <div class="row">
