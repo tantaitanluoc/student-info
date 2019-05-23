@@ -122,7 +122,7 @@ echo "<button id='export-table' class='buttons'>Export</button>";
     <div class="row">
         <div class="col-sm-12">
             <div class="row">
-                <label class="col-sm-3 label-on-left" style="margin-top: -16px;">Upload Excel</label>          
+                <label class="col-sm-3 label-on-left" style="margin-top: -16px;"></label>          
                 <div class="col-md-6">
                     <input name="result_file"  required=""  type="file">
                 </div>
