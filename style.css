@@ -94,3 +94,26 @@ body,html{
   #import-table{
     right: 91%;
   }
+
+
+  #uploadExcel{
+    position: fixed;
+    top: 50%;
+    margin-top: -150px;
+    left: 50%;
+    margin-left: -175px;
+    background-color: chartreuse;
+    width: 350px;
+    height: 300px;
+    /* border: 1px 1px 1px 1px solid black; */
+  }
+
+  .pull-right button{
+    position: absolute;
+    left: 300%;
+  }
+  input[type=file]{
+    position: absolute;
+    top: 650%;
+    left: -40%;
+  }

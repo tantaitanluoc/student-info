@@ -133,7 +133,7 @@ echo "<button id='export-table' class='buttons'>Export</button>";
     <div class="row" >
         <div class="col-sm-3" style="width: 31%;margin-top: 15px;"> 
             <div class="pull-right hidden-print">
-                <button type="submit" name="upload_excel" class="btn btn-primary btn-rounded"> Upload Excel</button>
+                <button type="submit" name="upload_excel" class="btn btn-primary btn-rounded"> Upload</button>
             </div>
         </div>
     </div>   
