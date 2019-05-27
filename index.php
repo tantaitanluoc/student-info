@@ -114,7 +114,9 @@ function recyclebin(){
     echo "</table>";
 }
 echo "<button id='import-table' class='buttons' class='pull-right hidden-print'>Import</button>";
-echo "<button id='export-table' class='buttons' class='pull-right hidden-print'>Export</button>";
+echo "<button id='export-table' class='buttons' class='pull-right hidden-print'>Export
+                  <span id='upload-waiting' class='spinner-border spinner-border-sm' role='status' aria-hidden='true' style='display: none;''></span>
+</button>";
 
 ?>
 
@@ -135,13 +137,17 @@ echo "<button id='export-table' class='buttons' class='pull-right hidden-print'>
     <div class="row" >
         <div class="col-sm-3" style="width: 31%;margin-top: 15px;"> 
             <div class="pull-right hidden-print">
-                <button type="submit" name="upload_excel" class="btn btn-primary btn-rounded"> Upload</button>
+                <button type="submit" class="btn btn-primary btn-rounded" name="upload_excel" >
+                  Upload
+                </button>
             </div>
         </div>
     </div>   
   </form>
 </div>
-
+<!-- <div class="spinner-border" role="status">
+  <span class="sr-only">Loading...</span>
+</div> -->
 </body>
 
     <script type="text/javascript" src="lib/func.js"></script>

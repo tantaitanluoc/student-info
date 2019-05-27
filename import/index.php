@@ -13,7 +13,6 @@ if(isset($_POST['upload_excel'])){
     header('Location: ../'); // redirect về trang chủ
 }
 
-
 function loadFileToDB($file){
     $objFile = PHPExcel_IOFactory::identify($file);
     $objData = PHPExcel_IOFactory::createReader($objFile);
@@ -46,8 +45,10 @@ function loadFileToDB($file){
     for ($i = 2; $i <= $Totalrow; $i++) {
         //----Lặp cột
         for ($j = 1; $j < $TotalCol; $j++) {
+            // $cell = $sheet->getCellByColumnAndRow($j, $i)->getValue();
             // Tiến hành lấy giá trị của từng ô đổ vào mảng
-            $data[$i - 2][$j] = $sheet->getCellByColumnAndRow($j, $i)->getValue();;
+            $temp = $sheet->getCellByColumnAndRow($j, $i)->getValue();
+            $data[$i - 2][$j] = $temp;
         }
     }
     //Insert vào CSDL 
