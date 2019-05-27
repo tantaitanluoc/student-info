@@ -113,10 +113,12 @@ function recyclebin(){
     echo "</tbody>";
     echo "</table>";
 }
-echo "<button id='import-table' class='buttons' class='pull-right hidden-print'>Import</button>";
-echo "<button id='export-table' class='buttons' class='pull-right hidden-print'>Export
-                  <span id='upload-waiting' class='spinner-border spinner-border-sm' role='status' aria-hidden='true' style='display: none;''></span>
-</button>";
+if($_SESSION['admin_mode']){
+  echo "<button id='import-table' class='buttons' class='pull-right hidden-print'>Import</button>";
+  echo "<button id='export-table' class='buttons' class='pull-right hidden-print'>Export
+                    <span id='upload-waiting' class='spinner-border spinner-border-sm' role='status' aria-hidden='true' style='display: none;''></span>
+  </button>";
+}
 
 ?>
 
