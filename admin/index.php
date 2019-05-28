@@ -47,12 +47,11 @@
 					<input type ="password" name = "password" required placeholder="Xác nhận mật khẩu">
 					<input type	="submit" class="button" name="submit" value="Lưu">
 					<a href=# id ='cancel' value=""> Thoát </a>
->				</div>	
+				</div>	
  			</form>
 		</div>
 	</div>
 <?php
-ini_set('session.cookie_domain',substr($_SERVER['SERVER_NAME'],strpos($_SERVER['SERVER_NAME'],"."),100));
 require '../lib/Classes/PHPExcel.php';
 require_once '../lib/Classes/PHPExcel/IOFactory.php';
 require '../lib/database.php';
