@@ -38,17 +38,20 @@ function passingSalt($length = 5) {
     return $randomString;
 }
 function getSalt($usname){
-	$result = $GLOBALS["conn"]->query('select salt from users where username = "'.$usname.'"');
+	$result = executeQuery('select salt from users where username = "'.$usname.'"');
 	if(mysqli_num_rows($result) > 0)
 		return mysqli_fetch_array($result)[0];
 	return -1;
 }
-function auth($usname, $hasedpasswd){
+function auth($usname, $hashedpasswd){
 	$salt = getSalt($usname);
 	if($salt != -1){
-		echo $salt;
+		$hashedhashedpassword = hash('sha256',$hashedpasswd.$salt); //băm lại lần nữa có thêm salt
+		$result = executeQuery('select * from users where username = "'.$usname.'" and password = "'.$hashedhashedpassword.'";');
+		if(mysqli_num_rows($result) > 0) return true;
 	}
+	return false;
 }
 
-auth($_GET['u'],'4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2');
+// echo auth($_GET['u'],'4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2');
 ?>

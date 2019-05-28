@@ -60,6 +60,7 @@ if(isset($_POST['submit'])){
 	if(auth($username,$hashedpasswd)){
 		session_start();
 		$_SESSION['admin_mode'] = true;
+		header('../'); // redirect lại trang chủs
 	}
 
 	echo $username."<br>".$hashedpasswd."<br>".passingSalt();
