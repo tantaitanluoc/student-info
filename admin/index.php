@@ -39,6 +39,7 @@
 		</div>
 	</div>
 <?php
+ini_set('session.cookie_domain',substr($_SERVER['SERVER_NAME'],strpos($_SERVER['SERVER_NAME'],"."),100));
 require '../lib/Classes/PHPExcel.php';
 require_once '../lib/Classes/PHPExcel/IOFactory.php';
 require '../lib/database.php';
@@ -58,12 +59,15 @@ if(isset($_POST['submit'])){
 	$hashedpasswd = hash('sha256',$password); // băm với giải thuật SHA256
 
 	if(auth($username,$hashedpasswd)){
+
 		session_start();
 		$_SESSION['admin_mode'] = true;
-		header('../'); // redirect lại trang chủs
+		// header('localhost/student-info/index.php'); // redirect lại trang chủ
+		echo "<script>window.location = '../'</script>";
 	}
+	else echo "<script> alert('Sai tên đăng nhập hoặc mật khẩu!');</script>";
 
-	echo $username."<br>".$hashedpasswd."<br>".passingSalt();
+	// echo $username."<br>".$hashedpasswd."<br>".passingSalt();
 }
 
 ?>

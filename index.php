@@ -27,6 +27,10 @@
 
     </div>
 <?php
+ini_set('session.cookie_domain',substr($_SERVER['SERVER_NAME'],strpos($_SERVER['SERVER_NAME'],"."),100));
+session_start();
+// session_unset();
+// session_destroy();
 header('Content-Type: text/html; charset=utf-8');
 //  Include thư viện PHPExcel_IOFactory vào
 require 'lib/Classes/PHPExcel.php';
@@ -113,7 +117,7 @@ function recyclebin(){
     echo "</tbody>";
     echo "</table>";
 }
-if($_SESSION['admin_mode']){
+if($_SESSION['admin_mode']==true){
   echo "<button id='import-table' class='buttons' class='pull-right hidden-print'>Import</button>";
   echo "<button id='export-table' class='buttons' class='pull-right hidden-print'>Export
                     <span id='upload-waiting' class='spinner-border spinner-border-sm' role='status' aria-hidden='true' style='display: none;''></span>
