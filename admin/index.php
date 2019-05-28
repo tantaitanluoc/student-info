@@ -9,7 +9,7 @@
 <title>Đăng nhập quyền quản trị</title>
 </head>
 <body>
-	<div id="login-wrapper" class ="jumbotron" style= display:none >
+	<div id="login-wrapper" class ="jumbotron" >
 		<div class='container'>
 			<span class="glyphicon glyphicon-list-alt"></span>
 				<h2>Quản trị viên</h2>
@@ -23,7 +23,7 @@
 		</div>
 	</div>	
 	
-	<div id ="info-wrapper" class ="jumbotron">
+	<div id ="info-wrapper" class ="jumbotron" style=display:none>
 		<div class ='container'>	
 			<form id ="infomation-form" method ="post" action = '<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>'>
 				<h2>Đổi mật khẩu></h2>
