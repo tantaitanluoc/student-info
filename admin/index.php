@@ -18,9 +18,27 @@
 require '../lib/Classes/PHPExcel.php';
 require_once '../lib/Classes/PHPExcel/IOFactory.php';
 require '../lib/database.php';
+function clean($string) {
+   $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+   $string = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+
+   return preg_replace('/-+/', '-', $string); // Replaces multiple hyphens with single one.
+}
+
 
 if(isset($_POST['submit'])){
+	$username = $_POST['username'];
+	$password = $_POST['password'];
 
+	$username = htmlspecialchars(strip_tags(preg_replace('/\s+/', '',$username))); // tránh xss và sql injection
+	$hashedpasswd = hash('sha256',$password); // băm với giải thuật SHA256
+
+	if(auth($username,$hashedpasswd)){
+		session_start();
+		$_SESSION['admin_mode'] = true;
+	}
+
+	echo $username."<br>".$hashedpasswd."<br>".passingSalt();
 }
 
 ?>

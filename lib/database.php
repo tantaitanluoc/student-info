@@ -28,4 +28,27 @@ function insertIntoTable($data){
 function executeQuery($query){
 	return $GLOBALS["conn"]->query($query); 
 }
+function passingSalt($length = 5) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
+function getSalt($usname){
+	$result = $GLOBALS["conn"]->query('select salt from users where username = "'.$usname.'"');
+	if(mysqli_num_rows($result) > 0)
+		return mysqli_fetch_array($result)[0];
+	return -1;
+}
+function auth($usname, $hasedpasswd){
+	$salt = getSalt($usname);
+	if($salt != -1){
+		echo $salt;
+	}
+}
+
+auth($_GET['u'],'4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2');
 ?>
