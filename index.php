@@ -27,10 +27,9 @@
 
     </div>
 <?php
-ini_set('session.cookie_domain',substr($_SERVER['SERVER_NAME'],strpos($_SERVER['SERVER_NAME'],"."),100));
+// ini_set('session.cookie_domain',substr($_SERVER['SERVER_NAME'],strpos($_SERVER['SERVER_NAME'],"."),100));
 session_start();
-// session_unset();
-// session_destroy();
+
 header('Content-Type: text/html; charset=utf-8');
 //  Include thư viện PHPExcel_IOFactory vào
 require 'lib/Classes/PHPExcel.php';
@@ -147,9 +146,7 @@ if($_SESSION['admin_mode']==true){
                 <button type="submit" class="btn btn-primary btn-rounded" name="upload_excel" >
                   Upload
                 </button>
-            </div>ALTER TABLE `users`
-  ADD PRIMARY KEY (`username`);
-COMMIT;
+            </div>
         </div>
     </div>   
   </form>
