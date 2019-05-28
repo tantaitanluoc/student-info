@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 <link href ="loginform.css" rel ="stylesheet">
 <title>Đăng nhập quyền quản trị</title>
+<script type="text/javascript">
+	 $(document).ready(function(){
+	 	$('#change-passwd').on("click", function(){
+		  	$('#info-wrapper').show();
+		  	$('#login-wrapper').hide();
+	  	});
+	  	$('#cancel').on("click",function(){
+		  	$('#login-wrapper').show();
+	  		$('#info-wrapper').hide();
+	  	})
+	 })
+</script>
 </head>
 <body>
 	<div id="login-wrapper" class ="jumbotron" >
@@ -18,22 +30,23 @@
 				<input type = "text" name = 'username' required placeholder ="Tên đăng nhập">
 				<input type="password" name="password" required placeholder="Mật khẩu">
 				<input type="submit" class="button" name="submit" value="Đăng nhập" >
-				<a href =# value=""><h6>Đổi mật khấu</h6></a>
+				<a href =# id="change-passwd"><h6>Đổi mật khấu</h6></a>
 			</form>
 		</div>
 	</div>	
+</div>
 	
 	<div id ="info-wrapper" class ="jumbotron" style = display:none>
 		<div class ='container'>	
 			<form id ="infomation-form" method ="post" action = '<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>'>
-				<h2>Đổi mật khẩu></h2>
+				<h2>Đổi mật khẩu</h2>
 				<div class id= 'box'>
 					<input type ="text" name = 'username' required placeholder ="Tên đăng nhập">
 					<input type	="password" name="password" required placeholder="Mật khẩu hiện tại">
 					<input type ="password" name = "password" required placeholder="Mật khẩu mới">
 					<input type ="password" name = "password" required placeholder="Xác nhận mật khẩu">
 					<input type	="submit" class="button" name="submit" value="Lưu">
-					<input type	="submit" class="button" name= "submit" value="Thoát">
+					<input id ='cancel' type ="button" class="button" name= "submit" value="Thoát">
 				</div>	
  			</form>
 		</div>
@@ -43,13 +56,6 @@ ini_set('session.cookie_domain',substr($_SERVER['SERVER_NAME'],strpos($_SERVER['
 require '../lib/Classes/PHPExcel.php';
 require_once '../lib/Classes/PHPExcel/IOFactory.php';
 require '../lib/database.php';
-function clean($string) {
-   $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
-   $string = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
-
-   return preg_replace('/-+/', '-', $string); // Replaces multiple hyphens with single one.
-}
-
 
 if(isset($_POST['submit'])){
 	$username = $_POST['username'];
