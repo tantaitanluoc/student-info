@@ -46,8 +46,8 @@
 					<input type ="password" name = "password" required placeholder="Mật khẩu mới">
 					<input type ="password" name = "password" required placeholder="Xác nhận mật khẩu">
 					<input type	="submit" class="button" name="submit" value="Lưu">
-					<input id ='cancel' type ="button" class="button" name= "submit" value="Thoát">
-				</div>	
+					<a href=# id ='cancel' value=""> Thoát </a>
+>				</div>	
  			</form>
 		</div>
 	</div>

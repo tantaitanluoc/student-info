@@ -82,7 +82,6 @@ body,html{
   background-color: #353b48; 
   border: none;
   color: white;
-  padding: 12px 30px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -90,16 +89,26 @@ body,html{
   border: 1px solid gray;
   color: gray;
   background-color: white;
-  padding: 8px 20px;
+  padding: 5px 20px;
   border-radius: 8px;
-  font-size: 20px;
+  font-size: 17px;
   font-weight: bold; 
   }
+
+  .buttons:hover {
+    background-color: #353b48;
+    color: #fff;
+  }
+  
+
   #export-table{
-    left: 91%;
+    left: 12%;
   }
   #import-table{
     right: 91%;
+  }
+  #log-out{
+    left: 91%;
   }
 
   #upload-excel{
