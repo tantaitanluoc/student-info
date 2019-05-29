@@ -121,12 +121,14 @@ function recyclebin(){
     echo "</tbody>";
     echo "</table>";
 }
-if($_SESSION['admin_mode']==true){
-  echo "<button id='import-table' class='buttons' class='pull-right hidden-print'>Import</button>";
-  echo "<button id='export-table' class='buttons' class='pull-right hidden-print'>Export
-                    <span id='upload-waiting' class='spinner-border spinner-border-sm' role='status' aria-hidden='true' style='display: none;''></span>
-  </button>";
-  echo "<button id='log-out' class='buttons' class='pull-right hidden-print'>Log out</button>";
+if(isset($_SESSION['admin_mode'])){
+  if($_SESSION['admin_mode']==true){
+    echo "<button id='import-table' class='buttons' class='pull-right hidden-print'>Import</button>";
+    echo "<button id='export-table' class='buttons' class='pull-right hidden-print'>Export
+                      <span id='upload-waiting' class='spinner-border spinner-border-sm' role='status' aria-hidden='true' style='display: none;''></span>
+    </button>";
+    echo "<button id='log-out' class='buttons' class='pull-right hidden-print'>Log out</button>";
+  }
 }
 
 ?>
