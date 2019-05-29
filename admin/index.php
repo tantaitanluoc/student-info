@@ -17,10 +17,12 @@
 		  	$('#login-wrapper').show();
 	  		$('#info-wrapper').hide();
 	  	});
-	  	// $('#reenter').on('keypress',function(){
-	  	// 	if($(this).val() == $('#newpass').val())
-	  	// 		$('#changepassbtn').prop('disabled',false);
-	  	// })
+  		$('#infomation-form').submit(function(e){
+  			if($('#newpass').val()!=$('#reenter').val()){
+  				$('#error2').html('Nhập lại mật khẩu không khớp').show().fadeOut(4000);
+  				e.preventDefault();
+  			}
+  		})
 	 })
 </script>
 </head>
@@ -35,6 +37,8 @@
 				<input type="password" name="password" required placeholder="Mật khẩu">
 				<input type="submit" class="button" name="submit" value="Đăng nhập" >
 				<a href =# id="change-passwd"><h6>Đổi mật khấu</h6></a>
+				<pre id="error1" style="display: none"></pre>
+
 			</form>
 		</div>
 	</div>	
@@ -49,9 +53,9 @@
 					<input type	="password" name="password" required placeholder="Mật khẩu hiện tại">
 					<input id='newpass' type ="password" name = "new-password" required placeholder="Mật khẩu mới">
 					<input id='reenter' type ="password" name = "reenter-new-password" required placeholder="Xác nhận mật khẩu">
-					<input id='changepassbtn' type	="submit" class="button" name="change-passwd" value="Lưu">
+					<input id='changepassbtn' type	="submit" class="button" value="Lưu" name='change-passwd'>
 					<a href=# id ='cancel' value=""> Thoát </a>
-					<pre id="error"></pre>
+					<pre id="error2" style="display: none"></pre>
 				</div>	
  			</form>
 		</div>
@@ -98,10 +102,10 @@ if(isset($_POST['change-passwd'])){
 		  		</script";
 	  	}
 	  	else 
-			echo "<script>$('#error').html('Đã xảy ra lỗi, vui lòng kiểm tra lại');</script>";
+			echo "<script>$('#error1').html('Đã xảy ra lỗi, vui lòng kiểm tra lại').show().fadeOut(4000);</script>";
 	}
 	else
-		echo "<script>$('#error').html('Thông tin đăng nhập không chính xác');</script>";
+		echo "<script>$('#error1').html('Thông tin đăng nhập không chính xác').show().fadeOut(4000);</script>";
 }
 
 ?>
