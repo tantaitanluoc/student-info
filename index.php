@@ -7,7 +7,8 @@
   <head>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-        <link href="style.css" rel ="stylesheet">
+        <link href="style2.css" rel ="stylesheet">
+        <script type="text/javascript">var ___visitor_ = 0</script>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <title>TRA CỨU THÔNG TIN SINH VIÊN</title>
@@ -49,7 +50,7 @@ function loadData(){
   if(mysqli_num_rows($data)>0){
     $head = true;
     echo "<table id='my-table' style='border:1px solid black;'>";
-    echo "<tr><th>MSSV</th><th>Họ tên</th><th>Giới tính</th><th>SĐT</th><th>Ngày sinh</th><th>Lớp</th><th>Địa chỉ</th>";
+    echo "<tr><th>MSSV</th><th id='hotensv'>Họ tên</th><th>Giới tính</th><th>SĐT</th><th>Ngày sinh</th><th>Lớp</th><th>Địa chỉ</th>";
     echo "<tbody id=my-table-content>";
     while ($row = mysqli_fetch_assoc($data)) {
       echo "<tr>";
@@ -157,7 +158,7 @@ if(isset($_SESSION['admin_mode'])){
         </div>
     </div>   
   </form>
-</div>
+</div><div id="rappers"></div>
 </body>
 
     <script type="text/javascript" src="lib/func.js"></script>
