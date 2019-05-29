@@ -26,7 +26,12 @@ function insertIntoTable($data){
 	// return $flag; // return true nếu thêm thành công
 }
 function executeQuery($query){
-	return $GLOBALS["conn"]->query($query); 
+	try{
+		$result = $GLOBALS["conn"]->query($query); 
+		return $result;
+	}catch(Exception $e){
+		return false;
+	}
 }
 function passingSalt($length = 5) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -52,9 +57,9 @@ function auth($usname, $hashedpasswd){
 	}
 	return false;
 }
-function changePasswd($username, $hasednewpasswd){
-	$salt = getSalt($usname);
-	$hashedhashednewpasswordohmygod = hash('sha256', $hashedhashednewpasswordohmygod.$salt);
+function changePasswd($username, $hashednewpasswd){
+	$salt = getSalt($username);
+	$hashedhashednewpasswordohmygod = hash('sha256', $hashednewpasswd.$salt);
 	$query = 'update users set password = "'.$hashedhashednewpasswordohmygod.'" where username = "'.$username.'";';
 	if($GLOBALS["conn"]->query($query)) return true;
 	return false;
