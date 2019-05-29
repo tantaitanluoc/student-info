@@ -10,13 +10,18 @@
         <link href="style.css" rel ="stylesheet">
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <title>Awesome Search Box</title>
+    <title>TRA CỨU THÔNG TIN SINH VIÊN</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   </head>
   <!-- Coded with love by d3t-->
   <body>
   <div id="wrapper">
+    <!-- Return to Top -->
+    <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
 
+
+    <!-- ICON NEEDS FONT AWESOME FOR CHEVRON UP ICON -->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <div class="container h-48">
       <div class="d-flex justify-content-center h-50">
         <div class="searchbar">
@@ -116,12 +121,14 @@ function recyclebin(){
     echo "</tbody>";
     echo "</table>";
 }
-if($_SESSION['admin_mode']==true){
-  echo "<button id='import-table' class='buttons' class='pull-right hidden-print'>Import</button>";
-  echo "<button id='export-table' class='buttons' class='pull-right hidden-print'>Export
-                    <span id='upload-waiting' class='spinner-border spinner-border-sm' role='status' aria-hidden='true' style='display: none;''></span>
-  </button>";
-  echo "<button id='log-out' class='buttons' class='pull-right hidden-print'>Log out</button>";
+if(isset($_SESSION['admin_mode'])){
+  if($_SESSION['admin_mode']==true){
+    echo "<button id='import-table' class='buttons' class='pull-right hidden-print'>Import</button>";
+    echo "<button id='export-table' class='buttons' class='pull-right hidden-print'>Export
+                      <span id='upload-waiting' class='spinner-border spinner-border-sm' role='status' aria-hidden='true' style='display: none;''></span>
+    </button>";
+    echo "<button id='log-out' class='buttons' class='pull-right hidden-print'>Log out</button>";
+  }
 }
 
 ?>
