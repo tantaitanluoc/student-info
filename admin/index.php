@@ -16,7 +16,11 @@
 	  	$('#cancel').on("click",function(){
 		  	$('#login-wrapper').show();
 	  		$('#info-wrapper').hide();
-	  	})
+	  	});
+	  	// $('#reenter').on('keypress',function(){
+	  	// 	if($(this).val() == $('#newpass').val())
+	  	// 		$('#changepassbtn').prop('disabled',false);
+	  	// })
 	 })
 </script>
 </head>
@@ -43,10 +47,11 @@
 				<div class id= 'box'>
 					<input type ="text" name = 'username' required placeholder ="Tên đăng nhập">
 					<input type	="password" name="password" required placeholder="Mật khẩu hiện tại">
-					<input type ="password" name = "password" required placeholder="Mật khẩu mới">
-					<input type ="password" name = "password" required placeholder="Xác nhận mật khẩu">
-					<input type	="submit" class="button" name="submit" value="Lưu">
+					<input id='newpass' type ="password" name = "new-password" required placeholder="Mật khẩu mới">
+					<input id='reenter' type ="password" name = "reenter-new-password" required placeholder="Xác nhận mật khẩu">
+					<input id='changepassbtn' type	="submit" class="button" name="change-passwd" value="Lưu">
 					<a href=# id ='cancel' value=""> Thoát </a>
+					<pre id="error"></pre>
 				</div>	
  			</form>
 		</div>
@@ -55,24 +60,47 @@
 require '../lib/Classes/PHPExcel.php';
 require_once '../lib/Classes/PHPExcel/IOFactory.php';
 require '../lib/database.php';
-
+function sanitize($string){
+	return htmlspecialchars(strip_tags(preg_replace('/\s+/', '',$string)));
+}
 if(isset($_POST['submit'])){
 	$username = $_POST['username'];
 	$password = $_POST['password'];
 
-	$username = htmlspecialchars(strip_tags(preg_replace('/\s+/', '',$username))); // tránh xss và sql injection
-	$hashedpasswd = hash('sha256',$password); // băm với giải thuật SHA256
+	$username = sanitize($username); // tránh xss và sql injection
+	$hashed_passwd = hash('sha256',$password); // băm với giải thuật SHA256
 
-	if(auth($username,$hashedpasswd)){
-
+	if(auth($username,$hashed_passwd)){
 		session_start();
 		$_SESSION['admin_mode'] = true;
-		// header('localhost/student-info/index.php'); // redirect lại trang chủ
-		echo "<script>window.location = '../'</script>";
+		echo "<script>window.location = '../'</script>";// redirect lại trang chủ
 	}
 	else echo "<script> alert('Sai tên đăng nhập hoặc mật khẩu!');</script>";
 
-	// echo $username."<br>".$hashedpasswd."<br>".passingSalt();
+	// echo $username."<br>".$hashed_passwd."<br>".passingSalt();
+}
+if(isset($_POST['change-passwd'])){
+	$username = sanitize($_POST['username']);
+	$password = sanitize($_POST['username']);
+	$new_password = sanitize($_POST['username']);
+	$reenter_new_password = sanitize($_POST['username']);
+
+	$hashed_passwd = hash('sha256',$password);
+	if(auth($username,$hashed_passwd)){
+		$hashed_new_passwd = hash('sha256',$new_password);
+		if(changePasswd($username,$hashed_new_passwd)){
+			echo "<script>alert('Đổi mật khẩu thành công');</script>";
+			echo "<script>
+					$('#login-wrapper').show();
+		  			$('#info-wrapper').hide();
+		  			$('input[name=username]').val(".$username.")
+		  		</script";
+	  	}
+	  	else 
+			echo "<script>$('#error').html('Đã xảy ra lỗi, vui lòng kiểm tra lại');</script>";
+	}
+	else
+		echo "<script>$('#error').html('Thông tin đăng nhập không chính xác');</script>";
 }
 
 ?>

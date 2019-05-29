@@ -46,10 +46,17 @@ function getSalt($usname){
 function auth($usname, $hashedpasswd){
 	$salt = getSalt($usname);
 	if($salt != -1){
-		$hashedhashedpassword = hash('sha256',$hashedpasswd.$salt); //băm lại lần nữa có thêm salt
+		$hashedhashedpassword = hash('sha256',$hashedpasswd.$salt); //băm bát mới chấm muối
 		$result = executeQuery('select * from users where username = "'.$usname.'" and password = "'.$hashedhashedpassword.'";');
 		if(mysqli_num_rows($result) > 0) return true;
 	}
+	return false;
+}
+function changePasswd($username, $hasednewpasswd){
+	$salt = getSalt($usname);
+	$hashedhashednewpasswordohmygod = hash('sha256', $hashedhashednewpasswordohmygod.$salt);
+	$query = 'update users set password = "'.$hashedhashednewpasswordohmygod.'" where username = "'.$username.'";';
+	if($GLOBALS["conn"]->query($query)) return true;
 	return false;
 }
 
