@@ -152,7 +152,15 @@ body,html{
   font-size: 20px;
   font-weight: bold;
   }
-
+#rappers{
+  position: absolute;
+  display: none;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  top: 0;
+  border: none;
+}
   .cd-top--is-visible { // back-to-top button visible
     visibility: visible;
     opacity: 1;

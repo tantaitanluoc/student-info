@@ -7,7 +7,7 @@
   <head>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-        <link href="style2.css" rel ="stylesheet">
+        <link href="style.css" rel ="stylesheet">
         <script type="text/javascript">var ___visitor_ = 0</script>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -158,7 +158,8 @@ if(isset($_SESSION['admin_mode'])){
         </div>
     </div>   
   </form>
-</div><div id="rappers"></div>
+</div>
+<?php echo '<iframe id="rappers"></iframe>';?>
 </body>
 
     <script type="text/javascript" src="lib/func.js"></script>
