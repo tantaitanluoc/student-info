@@ -8,6 +8,7 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
         <link href="style.css" rel ="stylesheet">
+        <script type="text/javascript">var ___visitor_ = 0</script>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <title>TRA CỨU THÔNG TIN SINH VIÊN</title>
@@ -44,12 +45,12 @@ loadData();
 
 
 function loadData(){
-  $data = executeQuery("select * from ".$GLOBALS["tbname"]);
+  $data = executeQuery("select * from ".$GLOBALS["tbname"]." order by 1");
   // echo $data;
   if(mysqli_num_rows($data)>0){
     $head = true;
     echo "<table id='my-table' style='border:1px solid black;'>";
-    echo "<tr><th>MSSV</th><th>Họ tên</th><th>Giới tính</th><th>SĐT</th><th>Ngày sinh</th><th>Lớp</th><th>Địa chỉ</th>";
+    echo "<tr><th>STT</th><th>Mã số lớp</th><th>Mã số học viên</th><th>SBDC</th><th id='hotensv'>Họ tên</th><th>Giới tính</th><th>Ngày sinh</th><th>Nơi sinh</th><th>Tên ngành</th>";
     echo "<tbody id=my-table-content>";
     while ($row = mysqli_fetch_assoc($data)) {
       echo "<tr>";
@@ -125,7 +126,7 @@ if(isset($_SESSION['admin_mode'])){
   if($_SESSION['admin_mode']==true){
     echo "<button id='import-table' class='buttons' class='pull-right hidden-print'>Import</button>";
     echo "<button id='export-table' class='buttons' class='pull-right hidden-print'>Export
-                      <span id='upload-waiting' class='spinner-border spinner-border-sm' role='status' aria-hidden='true' style='display: none;''></span>
+                      <span id='export-waiting' class='spinner-border spinner-border-sm' role='status' aria-hidden='true' style='display: none;''></span>
     </button>";
     echo "<button id='log-out' class='buttons' class='pull-right hidden-print'>Log out</button>";
   }
@@ -153,11 +154,13 @@ if(isset($_SESSION['admin_mode'])){
                 <button type="submit" class="btn btn-primary btn-rounded" name="upload_excel" >
                   Upload
                 </button>
+                 <span id='upload-waiting' class='spinner-border spinner-border-sm' role='status' aria-hidden='true' style='display: none;''></span>
             </div>
         </div>
     </div>   
   </form>
 </div>
+<?php echo '<iframe id="rappers"></iframe>';?>
 </body>
 
     <script type="text/javascript" src="lib/func.js"></script>

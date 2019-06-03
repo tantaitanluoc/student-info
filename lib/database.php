@@ -14,16 +14,13 @@ if ($conn->connect_error) {
 
 function insertIntoTable($data){
 	$flag = false;
-	$query = "insert into danhsach_sv values(".$data.");";
-	// echo $query;
-	// echo $query ."<br>";
+	$query = "insert into ".$GLOBALS["tbname"]." values(".$data.");";
 	if($GLOBALS["conn"]->query($query))
 		$flag = true;
 	else {
-		echo "Error: " . $query . "<br>" . $GLOBALS["conn"]->error;
 		$flag = false;
 	}
-	// return $flag; // return true nếu thêm thành công
+	return $flag; // return true nếu thêm thành công
 }
 function executeQuery($query){
 	try{
