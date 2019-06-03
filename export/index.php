@@ -11,19 +11,15 @@
 		$objPHPExcel = PHPExcel_IOFactory::load($fileName);
 
 		$objPHPExcel->setActiveSheetIndex(0)
-			->setCellValue('A1','MSSV')
-			->setCellValue('B1','Họ tên')
-			->setCellValue('C1','Giới tính')
-			->setCellValue('D1','SĐT')
-			->setCellValue('E1','Ngày sinh')
-			->setCellValue('F1','Lớp')
-			->setCellValue('G1','Địa chỉ');
-
-		// $spreadsheet->getActiveSheet()->getStyle('E1') 
-		//     ->getNumberFormat() 
-		//     ->setFormatCode( 
-		//     PHPExcel_Style_NumberFormat::FORMAT_DATE_YYYYMMDD2
-		//     ); 
+			->setCellValue('A1','STT')
+			->setCellValue('B1','Mã số lớp')
+			->setCellValue('C1','Mã số học viên')
+			->setCellValue('D1','SBDC')
+			->setCellValue('E1','Họ tên')
+			->setCellValue('F1','Giới tính')
+			->setCellValue('G1','Ngày sinh')
+			->setCellValue('H1','Nơi sinh')
+			->setCellValue('I1','Tên ngành');
 
 		$data = $_POST['data'];
 		$i = 2;
@@ -35,7 +31,10 @@
 				->setCellValue('D'.$i,$value[3])
 				->setCellValue('E'.$i,$value[4])
 				->setCellValue('F'.$i,$value[5])
-				->setCellValue('G'.$i,$value[6]);
+				->setCellValue('G'.$i,$value[6])
+				->setCellValue('H'.$i,$value[7])
+				->setCellValue('I'.$i,$value[8]);
+
 			$i++;
 		}
 		$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel,$fileType);

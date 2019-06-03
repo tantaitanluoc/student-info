@@ -50,7 +50,7 @@ function loadData(){
   if(mysqli_num_rows($data)>0){
     $head = true;
     echo "<table id='my-table' style='border:1px solid black;'>";
-    echo "<tr><th>MSSV</th><th id='hotensv'>Họ tên</th><th>Giới tính</th><th>SĐT</th><th>Ngày sinh</th><th>Lớp</th><th>Địa chỉ</th>";
+    echo "<tr><th>STT</th><th>Mã số lớp</th><th>Mã số học viên</th><th>SBDC</th><th id='hotensv'>Họ tên</th><th>Giới tính</th><th>Ngày sinh</th><th>Nơi sinh</th><th>Tên ngành</th>";
     echo "<tbody id=my-table-content>";
     while ($row = mysqli_fetch_assoc($data)) {
       echo "<tr>";
@@ -126,7 +126,7 @@ if(isset($_SESSION['admin_mode'])){
   if($_SESSION['admin_mode']==true){
     echo "<button id='import-table' class='buttons' class='pull-right hidden-print'>Import</button>";
     echo "<button id='export-table' class='buttons' class='pull-right hidden-print'>Export
-                      <span id='upload-waiting' class='spinner-border spinner-border-sm' role='status' aria-hidden='true' style='display: none;''></span>
+                      <span id='export-waiting' class='spinner-border spinner-border-sm' role='status' aria-hidden='true' style='display: none;''></span>
     </button>";
     echo "<button id='log-out' class='buttons' class='pull-right hidden-print'>Log out</button>";
   }
@@ -154,6 +154,7 @@ if(isset($_SESSION['admin_mode'])){
                 <button type="submit" class="btn btn-primary btn-rounded" name="upload_excel" >
                   Upload
                 </button>
+                 <span id='upload-waiting' class='spinner-border spinner-border-sm' role='status' aria-hidden='true' style='display: none;''></span>
             </div>
         </div>
     </div>   
