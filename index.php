@@ -45,7 +45,7 @@ loadData();
 
 
 function loadData(){
-  $data = executeQuery("select * from ".$GLOBALS["tbname"]);
+  $data = executeQuery("select * from ".$GLOBALS["tbname"]." order by 1");
   // echo $data;
   if(mysqli_num_rows($data)>0){
     $head = true;
