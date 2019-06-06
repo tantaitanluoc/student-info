@@ -1,8 +1,9 @@
 <?php
-	if(isset($_GET['data']) or (true!=false)){
+	if(isset($_POST['data'])){
 
 		require '../lib/Classes/PHPExcel.php';
 		require_once '../lib/Classes/PHPExcel/IOFactory.php';
+		require '../lib/database.php';
 		$fileType = 'Excel2007';
 		$fileName = 'exp_danhsach_'.date("dmY").'.xlsx';
 		
@@ -11,31 +12,32 @@
 		$objPHPExcel = PHPExcel_IOFactory::load($fileName);
 
 		$objPHPExcel->setActiveSheetIndex(0)
-			->setCellValue('A1','MSSV')
-			->setCellValue('B1','Họ tên')
-			->setCellValue('C1','Giới tính')
-			->setCellValue('D1','SĐT')
-			->setCellValue('E1','Ngày sinh')
-			->setCellValue('F1','Lớp')
-			->setCellValue('G1','Địa chỉ');
-
-		// $spreadsheet->getActiveSheet()->getStyle('E1') 
-		//     ->getNumberFormat() 
-		//     ->setFormatCode( 
-		//     PHPExcel_Style_NumberFormat::FORMAT_DATE_YYYYMMDD2
-		//     ); 
+			->setCellValue('A1','STT')
+			->setCellValue('B1','Mã số lớp')
+			->setCellValue('C1','Mã số học viên')
+			->setCellValue('D1','SBDC')
+			->setCellValue('E1','Họ tên')
+			->setCellValue('F1','Giới tính')
+			->setCellValue('G1','Ngày sinh')
+			->setCellValue('H1','Nơi sinh')
+			->setCellValue('I1','Tên ngành');
 
 		$data = $_POST['data'];
 		$i = 2;
-		foreach ($data as $value) {
+		$query = 'select distinct * from '.$GLOBALS['tbname'].' where mshv in ("'.implode('","', $data).'") order by 1;';
+		$rs = executeQuery($query);
+		while ($row = mysqli_fetch_assoc($rs)) {
 			$objPHPExcel->setActiveSheetIndex(0)
-				->setCellValue('A'.$i,$value[0])
-				->setCellValue('B'.$i,$value[1])
-				->setCellValue('C'.$i,$value[2])
-				->setCellValue('D'.$i,$value[3])
-				->setCellValue('E'.$i,$value[4])
-				->setCellValue('F'.$i,$value[5])
-				->setCellValue('G'.$i,$value[6]);
+				->setCellValue('A'.$i,$row['tt'])
+				->setCellValue('B'.$i,$row['ma_so_lop'])
+				->setCellValue('C'.$i,$row['mshv'])
+				->setCellValue('D'.$i,$row['sbdc'])
+				->setCellValue('E'.$i,$row['hoten'])
+				->setCellValue('F'.$i,$row['phai'])
+				->setCellValue('G'.$i,$row['ngay_sinh'])
+				->setCellValue('H'.$i,$row['noi_sinh'])
+				->setCellValue('I'.$i,$row['ten_nganh']);
+
 			$i++;
 		}
 		$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel,$fileType);
@@ -46,7 +48,6 @@
 			die('Error: '.$e);
 		}
 		echo $fileName;
-
 	}
 
 ?>

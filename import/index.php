@@ -9,8 +9,12 @@ if(isset($_POST['upload_excel'])){
     $new_file_name = "danhsach_".date("dmY").".".end(explode('.',$file_info)); // lấy phần mở rộng file
     $file_path = $file_directory.$new_file_name;
     move_uploaded_file($_FILES['result_file']['tmp_name'],$file_path);
-    loadFileToDB($file_path);
-    header('Location: ../'); // redirect về trang chủ
+    if(!loadFileToDB($file_path))
+        echo "ok";
+        // echo "<script>alert('Lỗi khi nhập'); window.location = '../'</script>";
+
+    else header('Location: ../'); // redirect về trang chủ
+    unlink($file_path);
 }
 
 function loadFileToDB($file){
@@ -39,12 +43,12 @@ function loadFileToDB($file){
 
     //Tạo mảng chứa dữ liệu
     $data = [];
-
     //Tiến hành lặp qua từng ô dữ liệu
     //----Lặp dòng, Vì dòng đầu là tiêu đề cột nên chúng ta sẽ lặp giá trị từ dòng 2
+    $colLength = min($TotalCol,9);
     for ($i = 2; $i <= $Totalrow; $i++) {
         //----Lặp cột
-        for ($j = 1; $j < $TotalCol; $j++) {
+        for ($j = 0; $j < $colLength; $j++) {
             // $cell = $sheet->getCellByColumnAndRow($j, $i)->getValue();
             // Tiến hành lấy giá trị của từng ô đổ vào mảng
             $temp = $sheet->getCellByColumnAndRow($j, $i)->getValue();
@@ -52,9 +56,17 @@ function loadFileToDB($file){
         }
     }
     //Insert vào CSDL 
-    foreach ($data as $key => $value) {
-      insertIntoTable('"'.implode('","', $value).'"');
+    $success = true;
+    foreach ($data as $key => $value){
+        $line = array();
+        foreach ($value as $valuelue){
+            if(is_string($valuelue))
+                array_push($line,'"'.$valuelue.'"'); // Nếu là kiểu chuỗi thì bao trong dấu ngoặc kép
+            else array_push($line, $valuelue);
+        }
+        if(!insertIntoTable(implode(',', $line)))
+            $success = false;
     }
+    return $success;
 }
-
 ?>
