@@ -1,16 +1,11 @@
-
-
-<!------ Include the above in your HEAD tag ---------->
-
 <!DOCTYPE html>
 <html>
   <head>
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-        <link href="style.css" rel ="stylesheet">
-        <script type="text/javascript">var ___visitor_ = 0</script>
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <link href="style.css" rel ="stylesheet">
+    <script type="text/javascript">var ___visitor_ = 0</script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <title>TRA CỨU THÔNG TIN SINH VIÊN</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   </head>
@@ -37,7 +32,6 @@
 session_start();
 
 header('Content-Type: text/html; charset=utf-8');
-//  Include thư viện PHPExcel_IOFactory vào
 require 'lib/Classes/PHPExcel.php';
 require_once 'lib/Classes/PHPExcel/IOFactory.php';
 require 'lib/database.php';
@@ -62,71 +56,70 @@ function loadData(){
   }
 }
 
-function recyclebin(){
-    $inputFileName = 'data/1.xlsx';
+// function recyclebin(){
+//     $inputFileName = 'data/1.xlsx';
 
-    //  Tiến hành đọc file excel
-    try {
-        $inputFileType = PHPExcel_IOFactory::identify($inputFileName);
-        $objReader = PHPExcel_IOFactory::createReader($inputFileType);
-        $objPHPExcel = $objReader->load($inputFileName);
-    } catch(Exception $e) {
-        die('Lỗi không thể đọc file "'.pathinfo($inputFileName,PATHINFO_BASENAME).'": '.$e->getMessage());
-    }
+//     //  Tiến hành đọc file excel
+//     try {
+//         $inputFileType = PHPExcel_IOFactory::identify($inputFileName);
+//         $objReader = PHPExcel_IOFactory::createReader($inputFileType);
+//         $objPHPExcel = $objReader->load($inputFileName);
+//     } catch(Exception $e) {
+//         die('Lỗi không thể đọc file "'.pathinfo($inputFileName,PATHINFO_BASENAME).'": '.$e->getMessage());
+//     }
 
-    //  Lấy thông tin cơ bản của file excel
+//     //  Lấy thông tin cơ bản của file excel
 
-    // Lấy sheet hiện tại
-    $sheet = $objPHPExcel->getSheet(0); 
+//     // Lấy sheet hiện tại
+//     $sheet = $objPHPExcel->getSheet(0); 
 
-    // Lấy tổng số dòng của file, trong trường hợp này là 6 dòng
-    $highestRow = $sheet->getHighestRow(); 
+//     // Lấy tổng số dòng của file, trong trường hợp này là 6 dòng
+//     $highestRow = $sheet->getHighestRow(); 
 
-    // Lấy tổng số cột của file, trong trường hợp này là 4 dòng
-    $highestColumn = $sheet->getHighestColumn();
+//     // Lấy tổng số cột của file, trong trường hợp này là 4 dòng
+//     $highestColumn = $sheet->getHighestColumn();
 
-    // Khai báo mảng $rowData chứa dữ liệu
+//     // Khai báo mảng $rowData chứa dữ liệu
 
-    //  Thực hiện việc lặp qua từng dòng của file, để lấy thông tin
-    for ($row = 1; $row <= $highestRow; $row++){ 
-        // Lấy dữ liệu từng dòng và đưa vào mảng $rowData
-        $rowData[] = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE,FALSE);
-    }
-    $head = true;
-    echo "<table id='my-table' style='border:1px solid black;'>";
-    foreach ($rowData as $row) {
-      foreach ($row as $value) {
-          echo "<tr>";
-          foreach ($value as $key) {
-            if(!$head){
-                echo "<td>";
-                echo $key;
-                echo "</td>";
-                # code...
-            }
-            else{
-                echo "<th>";
-                echo $key;
-                echo "</th>";
-                # code...
-            }
-          }
-           if($head){
-              $head = false;
-              echo "<tbody id='my-table-content'>";
-           }
-          echo "</tr>";
-      }
-      # code...
-    }
-    echo "</tbody>";
-    echo "</table>";
-}
+//     //  Thực hiện việc lặp qua từng dòng của file, để lấy thông tin
+//     for ($row = 1; $row <= $highestRow; $row++){ 
+//         // Lấy dữ liệu từng dòng và đưa vào mảng $rowData
+//         $rowData[] = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE,FALSE);
+//     }
+//     $head = true;
+//     echo "<table id='my-table' style='border:1px solid black;'>";
+//     foreach ($rowData as $row) {
+//       foreach ($row as $value) {
+//           echo "<tr>";
+//           foreach ($value as $key) {
+//             if(!$head){
+//                 echo "<td>";
+//                 echo $key;
+//                 echo "</td>";
+//                 # code...
+//             }
+//             else{
+//                 echo "<th>";
+//                 echo $key;
+//                 echo "</th>";
+//                 # code...
+//             }
+//           }
+//            if($head){
+//               $head = false;
+//               echo "<tbody id='my-table-content'>";
+//            }
+//           echo "</tr>";
+//       }
+//       # code...
+//     }
+//     echo "</tbody>";
+//     echo "</table>";
+// }
 if(isset($_SESSION['admin_mode'])){
   if($_SESSION['admin_mode']==true){
     echo "<button id='import-table' class='buttons' class='pull-right hidden-print'>Import</button>";
     echo "<button id='export-table' class='buttons' class='pull-right hidden-print'>Export
-                      <span id='export-waiting' class='spinner-border spinner-border-sm' role='status' aria-hidden='true' style='display: none;''></span>
     </button>";
     echo "<button id='log-out' class='buttons' class='pull-right hidden-print'>Log out</button>";
   }
@@ -140,7 +133,7 @@ if(isset($_SESSION['admin_mode'])){
     <div class="row">
         <div class="col-sm-12">
             <div class="row">
-                <label class="col-sm-3 label-on-left" style="margin-top: -16px;"></label>          
+                <label class="col-sm-3 label-on-left" style="margin-top: -16px;"></label> 
                 <div class="col-md-6">
                     <input name="result_file"  required=""  type="file">
                 </div>
@@ -154,7 +147,6 @@ if(isset($_SESSION['admin_mode'])){
                 <button type="submit" class="btn btn-primary btn-rounded" name="upload_excel" >
                   Upload
                 </button>
-                 <span id='upload-waiting' class='spinner-border spinner-border-sm' role='status' aria-hidden='true' style='display: none;''></span>
             </div>
         </div>
     </div>   
