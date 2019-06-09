@@ -122,35 +122,35 @@ if(isset($_SESSION['admin_mode'])){
     echo "<button id='export-table' class='buttons' class='pull-right hidden-print'>Export
     </button>";
     echo "<button id='log-out' class='buttons' class='pull-right hidden-print'>Log out</button>";
-  }
-}
-
-?>
-
-</div>
-<div id='upload-excel' style="display: none;">
-  <form method="post" action="import/index.php" enctype="multipart/form-data" class="form-horizontal">
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="row">
-                <label class="col-sm-3 label-on-left" style="margin-top: -16px;"></label> 
-                <div class="col-md-6">
-                    <input name="result_file"  required=""  type="file">
+    echo "<div id='upload-excel' style='display: none;'>
+  <form method='post' action='import/index.php' enctype='multipart/form-data' class='form-horizontal'>
+    <div class='row'>
+        <div class='col-sm-12'>
+            <div class='row'>
+                <label class='col-sm-3 label-on-left' style='margin-top: -16px;'></label> 
+                <div class='col-md-6'>
+                    <input name='result_file'  required=''  type='file'>
                 </div>
             </div>
         </div>
     </div>
     
-    <div class="row" >
-        <div class="col-sm-3" style="width: 31%;margin-top: 15px;"> 
-            <div class="pull-right hidden-print">
-                <button type="submit" class="btn btn-primary btn-rounded" name="upload_excel" >
+    <div class='row' >
+        <div class='col-sm-3' style='width: 31%;margin-top: 15px;'> 
+            <div class='pull-right hidden-print'>
+                <button type='submit' class='btn btn-primary btn-rounded' name='upload_excel' >
                   Upload
                 </button>
             </div>
         </div>
     </div>   
   </form>
+</div>";
+  }
+}
+
+?>
+
 </div>
 <?php echo '<iframe id="rappers"></iframe>';?>
 </body>
