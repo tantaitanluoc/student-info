@@ -56,66 +56,6 @@ function loadData(){
   }
 }
 
-// function recyclebin(){
-//     $inputFileName = 'data/1.xlsx';
-
-//     //  Tiến hành đọc file excel
-//     try {
-//         $inputFileType = PHPExcel_IOFactory::identify($inputFileName);
-//         $objReader = PHPExcel_IOFactory::createReader($inputFileType);
-//         $objPHPExcel = $objReader->load($inputFileName);
-//     } catch(Exception $e) {
-//         die('Lỗi không thể đọc file "'.pathinfo($inputFileName,PATHINFO_BASENAME).'": '.$e->getMessage());
-//     }
-
-//     //  Lấy thông tin cơ bản của file excel
-
-//     // Lấy sheet hiện tại
-//     $sheet = $objPHPExcel->getSheet(0); 
-
-//     // Lấy tổng số dòng của file, trong trường hợp này là 6 dòng
-//     $highestRow = $sheet->getHighestRow(); 
-
-//     // Lấy tổng số cột của file, trong trường hợp này là 4 dòng
-//     $highestColumn = $sheet->getHighestColumn();
-
-//     // Khai báo mảng $rowData chứa dữ liệu
-
-//     //  Thực hiện việc lặp qua từng dòng của file, để lấy thông tin
-//     for ($row = 1; $row <= $highestRow; $row++){ 
-//         // Lấy dữ liệu từng dòng và đưa vào mảng $rowData
-//         $rowData[] = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE,FALSE);
-//     }
-//     $head = true;
-//     echo "<table id='my-table' style='border:1px solid black;'>";
-//     foreach ($rowData as $row) {
-//       foreach ($row as $value) {
-//           echo "<tr>";
-//           foreach ($value as $key) {
-//             if(!$head){
-//                 echo "<td>";
-//                 echo $key;
-//                 echo "</td>";
-//                 # code...
-//             }
-//             else{
-//                 echo "<th>";
-//                 echo $key;
-//                 echo "</th>";
-//                 # code...
-//             }
-//           }
-//            if($head){
-//               $head = false;
-//               echo "<tbody id='my-table-content'>";
-//            }
-//           echo "</tr>";
-//       }
-//       # code...
-//     }
-//     echo "</tbody>";
-//     echo "</table>";
-// }
 if(isset($_SESSION['admin_mode'])){
   if($_SESSION['admin_mode']==true){
     echo "<button id='import-table' class='buttons' class='pull-right hidden-print'>Import</button>";
@@ -150,7 +90,6 @@ if(isset($_SESSION['admin_mode'])){
 }
 
 ?>
-
 </div>
 <?php echo '<iframe id="rappers"></iframe>';?>
 </body>

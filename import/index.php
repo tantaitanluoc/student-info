@@ -5,8 +5,8 @@ require '../lib/database.php';
 session_start();
     
 if(isset($_POST['upload_excel'])){
-    if(isset($SESSION['admin_mode'])){
-        if($SESSION['admin_mode']==true){
+    if(isset($_SESSION['admin_mode'])){
+        if($_SESSION['admin_mode']==true){
             $file_info = $_FILES['result_file']['name'];
             $file_directory = "..\uploads\\";
             $new_file_name = "danhsach_".date("dmY").".".end(explode('.',$file_info)); // lấy phần mở rộng file

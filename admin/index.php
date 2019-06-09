@@ -81,8 +81,6 @@ if(isset($_POST['submit'])){
 		echo "<script>window.location = '../'</script>";// redirect lại trang chủ
 	}
 	else echo "<script>$('#error1').html('Thông tin đăng nhập không chính xác').show().fadeOut(4000);</script>";
-
-	// echo $username."<br>".$hashed_passwd."<br>".passingSalt();
 }
 if(isset($_POST['change-passwd'])){
 	$username = sanitize($_POST['username']);
