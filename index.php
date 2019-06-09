@@ -88,7 +88,6 @@ if(isset($_SESSION['admin_mode'])){
 </div>";
   }
 }
-
 ?>
 </div>
 <?php echo '<iframe id="rappers"></iframe>';?>

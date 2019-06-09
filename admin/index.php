@@ -84,10 +84,9 @@ if(isset($_POST['submit'])){
 }
 if(isset($_POST['change-passwd'])){
 	$username = sanitize($_POST['username']);
-	$password = sanitize($_POST['password']);
-	$new_password = sanitize($_POST['new-password']);
-	$reenter_new_password = sanitize($_POST['reenter-new-password']);
-
+	$password = $_POST['password'];
+	$new_password = $_POST['new-password'];
+	$reenter_new_password = $_POST['reenter-new-password'];
 	$hashed_passwd = hash('sha256',$password);
 	if(auth($username,$hashed_passwd)){
 		$hashed_new_passwd = hash('sha256',$new_password);

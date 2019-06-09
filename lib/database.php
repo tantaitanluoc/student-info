@@ -55,12 +55,11 @@ function auth($usname, $hashedpasswd){
 	return false;
 }
 function changePasswd($username, $hashednewpasswd){
-	$salt = getSalt($username);
+	$salt = passingSalt(); // tạo một salt mới
 	$hashedhashednewpasswordohmygod = hash('sha256', $hashednewpasswd.$salt);
-	$query = 'update users set password = "'.$hashedhashednewpasswordohmygod.'" where username = "'.$username.'";';
+	// cập nhật cả mật khẩu mới lẫn salt mới
+	$query = 'update users set password = "'.$hashedhashednewpasswordohmygod.'", salt = "'.$salt.'" where username = "'.$username.'";';
 	if($GLOBALS["conn"]->query($query)) return true;
 	return false;
 }
-
-// echo auth($_GET['u'],'4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2');
 ?>
