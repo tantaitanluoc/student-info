@@ -6,15 +6,14 @@ session_start();
     
 if(isset($_POST['upload_excel'])){
     if(isset($_SESSION['admin_mode'])){
-        if($_SESSION['admin_mode']==true){
+        if($_SESSION['admin_mode']===true){
             $file_info = $_FILES['result_file']['name'];
             $file_directory = "..\uploads\\";
             $new_file_name = "danhsach_".date("dmY").".".end(explode('.',$file_info)); // lấy phần mở rộng file
             $file_path = $file_directory.$new_file_name;
             move_uploaded_file($_FILES['result_file']['tmp_name'],$file_path);
             if(!loadFileToDB($file_path))
-                echo "ok";
-                // echo "<script>alert('Lỗi khi nhập'); window.location = '../'</script>";
+                echo "<script>alert('Lỗi khi nhập'); window.location = '../'</script>";
 
             else header('Location: ../'); // redirect về trang chủ
             unlink($file_path);

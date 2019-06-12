@@ -57,7 +57,7 @@ function loadData(){
 }
 
 if(isset($_SESSION['admin_mode'])){
-  if($_SESSION['admin_mode']==true){
+  if($_SESSION['admin_mode']===true){
     echo "<button id='import-table' class='buttons' class='pull-right hidden-print'>Import</button>";
     echo "<button id='export-table' class='buttons' class='pull-right hidden-print'>Export
     </button>";
