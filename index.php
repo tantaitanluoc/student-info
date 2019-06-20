@@ -31,6 +31,16 @@
 // ini_set('session.cookie_domain',substr($_SERVER['SERVER_NAME'],strpos($_SERVER['SERVER_NAME'],"."),100));
 session_start();
 
+date_default_timezone_set("Asia/Ho_Chi_Minh"); // GMT+7
+$log_file = 'logs/'.date("d-m-Y").'.log';
+if(!file_exists($log_file))
+	file_put_contents($log_file, "");
+$fin = fopen($log_file,'a+');
+
+// ghi nhận IP người truy cập
+fwrite($fin, getUserIpAddr()."\t\t".date('h:i:sa').PHP_EOL);
+
+
 header('Content-Type: text/html; charset=utf-8');
 require 'lib/Classes/PHPExcel.php';
 require_once 'lib/Classes/PHPExcel/IOFactory.php';
@@ -87,6 +97,18 @@ if(isset($_SESSION['admin_mode'])){
   </form>
 </div>";
   }
+}
+function getUserIpAddr(){
+    if(!empty($_SERVER['HTTP_CLIENT_IP'])){
+        //ip from share internet
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+    }elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+        //ip pass from proxy
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    }else{
+        $ip = $_SERVER['REMOTE_ADDR'];
+    }
+    return $ip;
 }
 ?>
 </div>
