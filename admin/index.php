@@ -62,6 +62,11 @@
 	</div>
 <?php
 ini_set('session.cookie_domain',substr($_SERVER['SERVER_NAME'],strpos($_SERVER['SERVER_NAME'],"."),100));
+
+
+  // Code by Vo Tan Tai
+  // Contact me: tantaivo2015@gmail.com 
+
 require '../lib/Classes/PHPExcel.php';
 require_once '../lib/Classes/PHPExcel/IOFactory.php';
 require '../lib/database.php';
@@ -81,15 +86,12 @@ if(isset($_POST['submit'])){
 		echo "<script>window.location = '../'</script>";// redirect lại trang chủ
 	}
 	else echo "<script>$('#error1').html('Thông tin đăng nhập không chính xác').show().fadeOut(4000);</script>";
-
-	// echo $username."<br>".$hashed_passwd."<br>".passingSalt();
 }
 if(isset($_POST['change-passwd'])){
 	$username = sanitize($_POST['username']);
-	$password = sanitize($_POST['password']);
-	$new_password = sanitize($_POST['new-password']);
-	$reenter_new_password = sanitize($_POST['reenter-new-password']);
-
+	$password = $_POST['password'];
+	$new_password = $_POST['new-password'];
+	$reenter_new_password = $_POST['reenter-new-password'];
 	$hashed_passwd = hash('sha256',$password);
 	if(auth($username,$hashed_passwd)){
 		$hashed_new_passwd = hash('sha256',$new_password);

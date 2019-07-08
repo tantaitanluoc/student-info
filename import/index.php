@@ -1,20 +1,30 @@
 <?php
+
+
+  // Code by Vo Tan Tai
+  // Contact me: tantaivo2015@gmail.com 
+
 require '../lib/Classes/PHPExcel.php';
 require_once '../lib/Classes/PHPExcel/IOFactory.php';
 require '../lib/database.php';
+session_start();
     
 if(isset($_POST['upload_excel'])){
-    $file_info = $_FILES['result_file']['name'];
-    $file_directory = "..\uploads\\";
-    $new_file_name = "danhsach_".date("dmY").".".end(explode('.',$file_info)); // lấy phần mở rộng file
-    $file_path = $file_directory.$new_file_name;
-    move_uploaded_file($_FILES['result_file']['tmp_name'],$file_path);
-    if(!loadFileToDB($file_path))
-        echo "ok";
-        // echo "<script>alert('Lỗi khi nhập'); window.location = '../'</script>";
+    if(isset($_SESSION['admin_mode'])){
+        if($_SESSION['admin_mode']===true){
+            $file_info = $_FILES['result_file']['name'];
+            $file_directory = "..\uploads\\";
+            $new_file_name = "danhsach_".date("dmY").".".end(explode('.',$file_info)); // lấy phần mở rộng file
+            $file_path = $file_directory.$new_file_name;
+            move_uploaded_file($_FILES['result_file']['tmp_name'],$file_path);
+            if(!loadFileToDB($file_path))
+                echo "<script>alert('Lỗi khi nhập'); window.location = '../'</script>";
 
-    else header('Location: ../'); // redirect về trang chủ
-    unlink($file_path);
+            else header('Location: ../'); // redirect về trang chủ
+            unlink($file_path);
+        }
+    }
+    else echo "<script>alert('Bạn không có quyền import, vui lòng đăng nhập quản trị'); window.location = '../'</script>";
 }
 
 function loadFileToDB($file){
