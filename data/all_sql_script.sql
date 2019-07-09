@@ -39,4 +39,5 @@ COMMIT;
 
 INSERT INTO `users` (`username`, `password`, `salt`) VALUES
 ('admin', 'ba515c4e4567d90572369556d32359e531dc662ad00b71f76942a108ec585b6a', 'EpUSE');
+COMMIT;
 
