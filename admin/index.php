@@ -62,6 +62,11 @@
 	</div>
 <?php
 ini_set('session.cookie_domain',substr($_SERVER['SERVER_NAME'],strpos($_SERVER['SERVER_NAME'],"."),100));
+
+
+  // Code by Vo Tan Tai
+  // Contact me: tantaivo2015@gmail.com 
+
 require '../lib/Classes/PHPExcel.php';
 require_once '../lib/Classes/PHPExcel/IOFactory.php';
 require '../lib/database.php';

@@ -9,14 +9,9 @@
     <title>TRA CỨU THÔNG TIN SINH VIÊN</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   </head>
-  <!-- Coded with love by d3t-->
   <body>
   <div id="wrapper">
-    <!-- Return to Top -->
     <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
-
-
-    <!-- ICON NEEDS FONT AWESOME FOR CHEVRON UP ICON -->
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <div class="container h-48">
       <div class="d-flex justify-content-center h-50">
@@ -28,7 +23,14 @@
 
     </div>
 <?php
-// ini_set('session.cookie_domain',substr($_SERVER['SERVER_NAME'],strpos($_SERVER['SERVER_NAME'],"."),100));
+ini_set('session.cookie_domain',substr($_SERVER['SERVER_NAME'],strpos($_SERVER['SERVER_NAME'],"."),100));
+
+
+// Code by Vo Tan Tai
+// Contact me: tantaivo2015@gmail.com 
+
+
+
 session_start();
 
 date_default_timezone_set("Asia/Ho_Chi_Minh"); // GMT+7
