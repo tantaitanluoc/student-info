@@ -173,7 +173,6 @@ body,html{
   font-size: 20px;
   font-weight: bold;
   }
-
   .cd-top--is-visible { // back-to-top button visible
     visibility: visible;
     opacity: 1;

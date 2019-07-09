@@ -74,9 +74,27 @@ function loadFileToDB($file){
                 array_push($line,'"'.$valuelue.'"'); // Nếu là kiểu chuỗi thì bao trong dấu ngoặc kép
             else array_push($line, $valuelue);
         }
+        array_push($line,stripUnicode('"'.trim($line[2],'"').";".trim($line[4],'"').";".trim($line[8],'"').'"')); // bỏ dấu và gộp các trường mshv, hoten, ten_nganh để insert vào key_words
+        // do các trường kia đã thêm dấu ngoặc kép từ trước nên cần cắt bỏ (trim) đi 
+
         if(!insertIntoTable(implode(',', $line)))
             $success = false;
     }
     return $success;
+}
+
+function stripUnicode($str){
+    if(!$str) return "";
+    $unicode = array(
+      'a'=>'á|à|ả|ã|ạ|ă|ắ|ặ|ằ|ẳ|ẵ|â|ấ|ầ|ẩ|ẫ|ậ',
+      'd'=>'đ',
+      'e'=>'é|è|ẻ|ẽ|ẹ|ê|ế|ề|ể|ễ|ệ',
+      'i'=>'í|ì|ỉ|ĩ|ị',
+      'o'=>'ó|ò|ỏ|õ|ọ|ô|ố|ồ|ổ|ỗ|ộ|ơ|ớ|ờ|ở|ỡ|ợ',
+      'u'=>'ú|ù|ủ|ũ|ụ|ư|ứ|ừ|ử|ữ|ự',
+      'y'=>'ý|ỳ|ỷ|ỹ|ỵ',
+    );
+    foreach($unicode as $nonUnicode=>$uni) $str = preg_replace("/($uni)/i",$nonUnicode,$str);
+    return $str;
 }
 ?>

@@ -11,6 +11,9 @@ SET time_zone = "+00:00";
 CREATE DATABASE `student_info`;
 USE `student_info`;
 
+ALTER DATABASE `student_info` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+COMMIT;
+
 CREATE TABLE `danhsach_sv` (
   `tt` int(11) DEFAULT NULL,
   `ma_so_lop` char(8) DEFAULT NULL,
@@ -20,7 +23,8 @@ CREATE TABLE `danhsach_sv` (
   `phai` varchar(5) DEFAULT NULL,
   `ngay_sinh` char(10) DEFAULT NULL,
   `noi_sinh` varchar(100) DEFAULT NULL,
-  `ten_nganh` varchar(500) DEFAULT NULL
+  `ten_nganh` varchar(500) DEFAULT NULL,
+  `key_words` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `users` (

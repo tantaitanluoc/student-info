@@ -16,14 +16,21 @@
     <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <div class="container h-48">
+<<<<<<< HEAD
    
       <div class="d-flex justify-content-center h-50">
         <div class="searchbar">
           <input id='search_input' class="search_input" type="text" name="" placeholder="Nhập họ tên, Mã số hoặc Tên ngành..." spellcheck="false">
+=======
+      <form method="get" action="index.php" id="search_form">
+      <div class="d-flex justify-content-center h-50">
+        <div class="searchbar">
+          <input id='search_input' class="search_input" type="text" name="search_content" placeholder="Search..." spellcheck="false">
+>>>>>>> fc64c6fc93db2d6958c10ffab48873b2ddaf4f17
           <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
         </div>
       </div>
-
+    </form>
     </div>
 <?php
 
@@ -51,14 +58,19 @@ require_once 'lib/Classes/PHPExcel/IOFactory.php';
 require 'lib/database.php';
 // loadData();
 
-function showSearchForm(){
-  //code
+
+if(isset($_GET['search_content'])){
+  $content = sanitize($_GET['search_content']);
+  loadData($content);
 }
 
+function sanitize($string){
+  return htmlspecialchars(strip_tags($string));
+}
 
-function loadData(){
-  $data = executeQuery("select * from ".$GLOBALS["tbname"]." order by 1");
-  // echo $data;
+function loadData($keyword){
+  $query = "select tt,ma_so_lop,mshv,sbdc,hoten,phai,ngay_sinh,noi_sinh,ten_nganh from ".$GLOBALS["tbname"]." where key_words like '%" .$keyword. "%';";
+  $data = executeQuery($query);
   if(mysqli_num_rows($data)>0){
     $head = true;
     echo "<table id='my-table' style='border:1px solid black;'>";
