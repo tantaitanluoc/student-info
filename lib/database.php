@@ -49,7 +49,9 @@ function passingSalt($length = 5) {
     return $randomString;
 }
 function getSalt($usname){
-	$result = executeQuery('select salt from users where username = "'.$usname.'";');
+	// $result = executeQuery('select salt from users where username = "'.$usname.'";');
+	$result = executeQuery('select salt from users where username = "admin";');
+
 	if(mysqli_num_rows($result) > 0)
 		return mysqli_fetch_array($result)[0];
 	return -1;
@@ -71,6 +73,4 @@ function changePasswd($username, $hashednewpasswd){
 	if($GLOBALS["conn"]->query($query)) return true;
 	return false;
 }
-echo getSalt('admin').'<br>';
-echo auth('admin', '4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2')? 'true':'false';
 ?>

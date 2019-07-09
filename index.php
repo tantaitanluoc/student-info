@@ -10,20 +10,22 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   </head>
   <body>
+  
   <div id="wrapper">
+  <img id="logo_big" src= "logo.png" />
     <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <div class="container h-48">
+   
       <div class="d-flex justify-content-center h-50">
         <div class="searchbar">
-          <input id='search_input' class="search_input" type="text" name="" placeholder="Search..." spellcheck="false">
+          <input id='search_input' class="search_input" type="text" name="" placeholder="Nhập họ tên, Mã số hoặc Tên ngành..." spellcheck="false">
           <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
         </div>
       </div>
 
     </div>
 <?php
-ini_set('session.cookie_domain',substr($_SERVER['SERVER_NAME'],strpos($_SERVER['SERVER_NAME'],"."),100));
 
 
 // Code by Vo Tan Tai
@@ -47,7 +49,11 @@ header('Content-Type: text/html; charset=utf-8');
 require 'lib/Classes/PHPExcel.php';
 require_once 'lib/Classes/PHPExcel/IOFactory.php';
 require 'lib/database.php';
-loadData();
+// loadData();
+
+function showSearchForm(){
+  //code
+}
 
 
 function loadData(){
