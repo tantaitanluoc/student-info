@@ -23,7 +23,6 @@
 
     </div>
 <?php
-ini_set('session.cookie_domain',substr($_SERVER['SERVER_NAME'],strpos($_SERVER['SERVER_NAME'],"."),100));
 
 
 // Code by Vo Tan Tai
@@ -47,7 +46,11 @@ header('Content-Type: text/html; charset=utf-8');
 require 'lib/Classes/PHPExcel.php';
 require_once 'lib/Classes/PHPExcel/IOFactory.php';
 require 'lib/database.php';
-loadData();
+// loadData();
+
+function showSearchForm(){
+  
+}
 
 
 function loadData(){
