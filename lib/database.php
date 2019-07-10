@@ -24,6 +24,8 @@ if ($conn->connect_error) {
 function insertIntoTable($data){
 	$flag = false;
 	$query = "insert into ".$GLOBALS["tbname"]." values(".$data.");";
+	// echo $query."<br>";
+	// return true;
 	if($GLOBALS["conn"]->query($query))
 		$flag = true;
 	else {
@@ -36,7 +38,8 @@ function executeQuery($query){
 		$result = $GLOBALS["conn"]->query($query); 
 		return $result;
 	}catch(Exception $e){
-		return false;
+		// return false;
+		echo $e;
 	}
 }
 function passingSalt($length = 5) {
