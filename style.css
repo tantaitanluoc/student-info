@@ -73,6 +73,17 @@ body,html{
     }
 
 
+    #rs_filter{
+    top: -1rem;
+    left: 13rem;
+    width: 36rem;
+    height: 2rem;
+    border: 1px solid #353b48;
+    position: relative;
+    padding-left: 1rem;
+    }
+
+
 #my-table {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
