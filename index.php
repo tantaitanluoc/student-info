@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <link href="style.css" rel ="stylesheet">
-    <script type="text/javascript">var ___visitor_ = 0</script>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <title>TRA CỨU THÔNG TIN SINH VIÊN</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <script type="text/javascript" src="lib/func.js"></script>
-  </head>
-  <body>
-  <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
-  <div id="wrapper">
-    
-  <img id="logo_big" src= "logo.png" />
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-    <div class="container h-48" id="search_container">
-      <form id="search_form">
-      <div class="d-flex justify-content-center h-50">
-        <div class="searchbar">
-          <input id='search_input' class="search_input" type="text" name="search_content" placeholder="Nhập họ tên, Mã số hoặc Tên ngành..." spellcheck="false">
-          <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
-        </div>
-      </div>
-    </form>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <link href="style.css" rel ="stylesheet">
+  <script type="text/javascript">var ___visitor_ = 0</script>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <title>TRA CỨU THÔNG TIN SINH VIÊN</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <script type="text/javascript" src="lib/func.js"></script>
+</head>
+
+<body>
+<a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
+<div id="wrapper">
+<img id="logo_big" src= "logo.png" />
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<div class="container h-48" id="search_container">
+  <form id="search_form">
+  <div class="d-flex justify-content-center h-50">
+    <div class="searchbar">
+      <input id='search_input' class="search_input" type="text" name="search_content" placeholder="Nhập họ tên, Mã số hoặc Tên ngành..." spellcheck="false">
+      <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
     </div>
-  <div id='results' style="display: none">
+  </div>
+</form>
+</div>
+<div id='results' style="display: none">
+<div contenteditable = 'true' id='rs_filter' data-text='Lọc kết quả...'></div>
+<table id='my-table' style='border:1px solid black;'>
+<tr><th>STT</th><th>Mã số lớp</th><th>Mã số học viên</th><th>SBDC</th><th id='hotensv'>Họ tên</th><th>Giới tính</th><th>Ngày sinh</th><th>Nơi sinh</th><th>Tên ngành</th>
+<tbody id=my-table-content>
 <?php
 
 
@@ -65,6 +69,7 @@ function getUserIpAddr(){
     return $ip;
 }
 ?>
+</tbody></table>
 </div></div>
 
 <?php 

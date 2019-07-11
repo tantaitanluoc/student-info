@@ -10,20 +10,14 @@ function sanitize($string){
 function loadData($keyword){
   $query = "select tt,ma_so_lop,mshv,sbdc,hoten,phai,ngay_sinh,noi_sinh,ten_nganh from ".$GLOBALS["tbname"]." where key_words like '%" .$keyword. "%';";
   $data = executeQuery($query);
-  // echo "<div id='results'>";
   if(mysqli_num_rows($data)>0){
-    echo "<div contenteditable = 'true' id='rs_filter'>Lọc kết quả...</div>";
     $head = true;
-    echo "<table id='my-table' style='border:1px solid black;'>";
-    echo "<tr><th>STT</th><th>Mã số lớp</th><th>Mã số học viên</th><th>SBDC</th><th id='hotensv'>Họ tên</th><th>Giới tính</th><th>Ngày sinh</th><th>Nơi sinh</th><th>Tên ngành</th>";
-    echo "<tbody id=my-table-content>";
     while ($row = mysqli_fetch_assoc($data)) {
       echo "<tr>";
       foreach ($row as $key => $value)
         echo "<td>".$value."</td>";
       echo "</tr>";
     }
-    echo "</tbody></table>";
   }
 }
 function stripUnicode($str){
@@ -48,3 +42,4 @@ function stripUnicode($str){
     return $str;
 }
 ?>
+
