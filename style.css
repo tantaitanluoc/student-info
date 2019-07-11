@@ -184,6 +184,12 @@ body,html{
   #rappers{
     display: none;
   }
+  #results{
+    position: relative;
+/*    top: 0;
+    margin: 0;
+    width: 100%;*/
+  }
   #return-to-top {
     position: fixed;
     bottom: 20px;
@@ -203,6 +209,7 @@ body,html{
     -ms-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
+    z-index: 1;
 }
 #return-to-top i {
     color: #fff;
@@ -216,6 +223,7 @@ body,html{
     -ms-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
+
 }
 #return-to-top:hover {
     background: rgba(0, 0, 0, 0.9);

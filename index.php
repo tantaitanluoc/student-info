@@ -8,15 +8,16 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <title>TRA CỨU THÔNG TIN SINH VIÊN</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script type="text/javascript" src="lib/func.js"></script>
   </head>
   <body>
-  
+  <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
   <div id="wrapper">
+    
   <img id="logo_big" src= "logo.png" />
-    <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-    <div class="container h-48">
-      <form id="search_form" method="get" action="index.php">
+    <div class="container h-48" id="search_container">
+      <form id="search_form">
       <div class="d-flex justify-content-center h-50">
         <div class="searchbar">
           <input id='search_input' class="search_input" type="text" name="search_content" placeholder="Nhập họ tên, Mã số hoặc Tên ngành..." spellcheck="false">
@@ -25,6 +26,7 @@
       </div>
     </form>
     </div>
+  <div id='results' style="display: none">
 <?php
 
 
@@ -50,34 +52,22 @@ require 'lib/Classes/PHPExcel.php';
 require_once 'lib/Classes/PHPExcel/IOFactory.php';
 require 'lib/database.php';
 // loadData();
-
-
-if(isset($_GET['search_content'])){
-  $content = sanitize($_GET['search_content']);
-  loadData($content);
-}
-
-function sanitize($string){
-  return htmlspecialchars(strip_tags($string));
-}
-
-function loadData($keyword){
-  $query = "select tt,ma_so_lop,mshv,sbdc,hoten,phai,ngay_sinh,noi_sinh,ten_nganh from ".$GLOBALS["tbname"]." where key_words like '%" .$keyword. "%';";
-  $data = executeQuery($query);
-  if(mysqli_num_rows($data)>0){
-    $head = true;
-    echo "<table id='my-table' style='border:1px solid black;'>";
-    echo "<tr><th>STT</th><th>Mã số lớp</th><th>Mã số học viên</th><th>SBDC</th><th id='hotensv'>Họ tên</th><th>Giới tính</th><th>Ngày sinh</th><th>Nơi sinh</th><th>Tên ngành</th>";
-    echo "<tbody id=my-table-content>";
-    while ($row = mysqli_fetch_assoc($data)) {
-      echo "<tr>";
-      foreach ($row as $key => $value)
-        echo "<td>".$value."</td>";
-      echo "</tr>";
+function getUserIpAddr(){
+    if(!empty($_SERVER['HTTP_CLIENT_IP'])){
+        //ip from share internet
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+    }elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+        //ip pass from proxy
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    }else{
+        $ip = $_SERVER['REMOTE_ADDR'];
     }
-    echo "</tbody></table>";
-  }
+    return $ip;
 }
+?>
+</div></div>
+
+<?php 
 
 if(isset($_SESSION['admin_mode'])){
   if($_SESSION['admin_mode']===true){
@@ -111,24 +101,25 @@ if(isset($_SESSION['admin_mode'])){
 </div>";
   }
 }
-function getUserIpAddr(){
-    if(!empty($_SERVER['HTTP_CLIENT_IP'])){
-        //ip from share internet
-        $ip = $_SERVER['HTTP_CLIENT_IP'];
-    }elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
-        //ip pass from proxy
-        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-    }else{
-        $ip = $_SERVER['REMOTE_ADDR'];
-    }
-    return $ip;
-}
+
+echo '<iframe id="rappers"></iframe>';
 ?>
-</div>
-<?php echo '<iframe id="rappers"></iframe>';?>
 </body>
 
-    <script type="text/javascript" src="lib/func.js"></script>
+<script>
+$(window).scroll(function() {
+  if ($(this).scrollTop() >= 50) {
+      $('#return-to-top').fadeIn(200);
+  } else {
+      $('#return-to-top').fadeOut(200);
+  }
+});
+  $('#return-to-top').click(function() {
+    $('body,html').animate({
+      scrollTop : 0                      
+    }, 500);
+  });
+</script>
 
 </html>
 
