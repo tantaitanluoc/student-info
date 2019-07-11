@@ -243,7 +243,9 @@ body,html{
     color: #fff;
     top: 5px;
 }
-
+[contentEditable=true]:empty:not(:focus):before{
+    content:attr(data-text)
+}
 
 /* Extra Things */
 body{background: #eee ;
