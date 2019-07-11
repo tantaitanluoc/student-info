@@ -12,6 +12,7 @@ function loadData($keyword){
   $data = executeQuery($query);
   // echo "<div id='results'>";
   if(mysqli_num_rows($data)>0){
+    echo "<div contenteditable = 'true' id='rs_filter'>Lọc kết quả...</div>";
     $head = true;
     echo "<table id='my-table' style='border:1px solid black;'>";
     echo "<tr><th>STT</th><th>Mã số lớp</th><th>Mã số học viên</th><th>SBDC</th><th id='hotensv'>Họ tên</th><th>Giới tính</th><th>Ngày sinh</th><th>Nơi sinh</th><th>Tên ngành</th>";
