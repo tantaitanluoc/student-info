@@ -77,3 +77,4 @@ function changePasswd($username, $hashednewpasswd){
 	return false;
 }
 ?>
+
