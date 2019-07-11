@@ -236,6 +236,13 @@ body,html{
     transition: all 0.3s ease;
 
 }
+#aboutme{
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: .7rem;
+
+}
 #return-to-top:hover {
     background: rgba(0, 0, 0, 0.9);
 }

@@ -29,7 +29,7 @@
 <div id='results' style="display: none">
 <div contenteditable = 'true' id='rs_filter' data-text='Lọc kết quả...'></div>
 <table id='my-table' style='border:1px solid black;'>
-<tr><th>STT</th><th>Mã số lớp</th><th>Mã số học viên</th><th>SBDC</th><th id='hotensv'>Họ tên</th><th>Giới tính</th><th>Ngày sinh</th><th>Nơi sinh</th><th>Tên ngành</th>
+<tr><th>STT</th><th>Mã số lớp</th><th>Mã số học viên</th><th>SBDC</th><th>Họ tên</th><th>Giới tính</th><th>Ngày sinh</th><th>Nơi sinh</th><th>Tên ngành</th>
 <tbody id=my-table-content>
 <?php
 
@@ -71,6 +71,7 @@ function getUserIpAddr(){
 ?>
 </tbody></table>
 </div></div>
+<div id="aboutme">Được phát triển bởi chúng tôi</div>
 
 <?php 
 
