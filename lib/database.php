@@ -10,7 +10,7 @@
 
 $server = 'localhost';
 $uname = 'root';
-$passwd = 'root';
+$passwd = '';
 $dbname = 'student_info';
 $tbname = 'danhsach_sv';
 
