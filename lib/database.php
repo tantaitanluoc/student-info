@@ -1,13 +1,5 @@
 <?php
 
-
-
-// Code by Vo Tan Tai
-// Contact me: tantaivo2015@gmail.com 
-
-
-
-
 $server = 'localhost';
 $uname = 'root';
 $passwd = 'root';

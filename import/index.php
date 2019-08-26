@@ -1,9 +1,4 @@
 <?php
-
-
-  // Code by Vo Tan Tai
-  // Contact me: tantaivo2015@gmail.com 
-
 require '../lib/Classes/PHPExcel.php';
 require_once '../lib/Classes/PHPExcel/IOFactory.php';
 require '../lib/database.php';
@@ -21,8 +16,9 @@ if(isset($_POST['upload_excel'])){
                 echo "<script>alert('Lỗi khi nhập'); window.location = '../'</script>";
 
             else {
-                alert('Nhập vào cơ sở dữ liệu thành công');
-                header('Location: ../'); // redirect về trang chủ
+                // alert('Nhập vào cơ sở dữ liệu thành công');
+                echo "<script>window.location = '../'</script>";
+                // header('Location: ../'); // redirect về trang chủ
             }
             unlink($file_path);
         }

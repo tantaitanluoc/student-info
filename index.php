@@ -33,12 +33,6 @@
 <tbody id=my-table-content>
 <?php
 
-
-// Code by Vo Tan Tai
-// Contact me: tantaivo2015@gmail.com 
-
-
-
 session_start();
 
 date_default_timezone_set("Asia/Ho_Chi_Minh"); // GMT+7

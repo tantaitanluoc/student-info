@@ -1,10 +1,5 @@
 <?php
 
-
-  // Code by Vo Tan Tai
-  // Contact me: tantaivo2015@gmail.com 
-
-
 if(isset($_POST['data'])){
 
 	require '../lib/Classes/PHPExcel.php';
